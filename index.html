@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brawler Rewards - Official Style</title>
+    <title>Brawler Rewards - Pro Clean</title>
     <style>
         :root {
             --bs-blue: #2b5ce6;
@@ -19,69 +19,66 @@
             margin: 0; color: white; text-align: center;
         }
 
-        .header-section { padding: 20px 0; }
-        .logo { width: 140px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
+        .header-logo { width: 140px; margin: 20px 0; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
 
         .container {
-            width: 95%; max-width: 500px; margin: 0 auto;
+            width: 95%; max-width: 480px; margin: 0 auto;
             background: rgba(255, 255, 255, 0.05);
             border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px; padding: 20px 10px;
+            border-radius: 25px; padding: 15px 10px;
         }
 
-        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 
         .card {
             background: #4e21cc;
-            background-image: radial-gradient(circle at top, #6a36ff 0%, #4a1fbc 100%);
+            background-image: radial-gradient(circle at top, #6e3aff 0%, #4a1fbc 100%);
             border: 2px solid #7a46ff; border-radius: 18px;
-            padding: 10px 5px; position: relative;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            overflow: hidden;
+            padding: 12px 5px; position: relative;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.4);
             display: flex; flex-direction: column; align-items: center;
         }
 
-        .item-name { font-size: 9px; font-weight: 900; height: 25px; line-height: 1.1; margin-bottom: 5px; }
+        .item-name { font-size: 8px; font-weight: 900; height: 22px; line-height: 1.1; margin-bottom: 5px; }
 
-        /* HNA FIN T-FAKSA L-MOUCHKI */
+        /* HNA FIN GHADI T-7IYED L-KHALFYA L-FAKE */
         .img-box {
             height: 90px; width: 100%;
             display: flex; align-items: center; justify-content: center;
-            margin-bottom: 8px;
-        }
-        
-        .item-img { 
-            width: 100%; max-height: 100%; object-fit: contain;
-            /* Mix-blend-mode bach n-7iydu l-khalfiya ila kant k-7la awla byda */
-            mix-blend-mode: screen; 
-            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.4)) brightness(1.1);
+            overflow: hidden;
         }
 
-        .price-tag { color: var(--accent-green); font-size: 10px; font-weight: 900; margin-bottom: 8px; }
-        .old-p { text-decoration: line-through; opacity: 0.6; font-size: 8px; }
+        .item-img { 
+            width: 95%; height: 95%; object-fit: contain;
+            /* HADA HWA L-7ALL: K-i-khalli ghir l-west s-afi u k-i-7iyed l-7achiyat l-fake */
+            -webkit-mask-image: radial-gradient(circle, black 55%, transparent 100%);
+            mask-image: radial-gradient(circle, black 55%, transparent 100%);
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)) brightness(1.1);
+        }
+
+        .price-line { color: var(--accent-green); font-size: 9px; font-weight: 900; margin-top: 5px; }
+        .old { text-decoration: line-through; opacity: 0.6; font-size: 7px; margin-right: 3px; }
 
         .btn-claim {
             background: linear-gradient(180deg, #00afff 0%, #0066ff 100%);
-            border: none; border-bottom: 3px solid #0044aa;
-            border-radius: 8px; color: white; font-size: 12px; font-weight: 900;
-            padding: 8px 0; width: 90%; cursor: pointer;
+            border: none; border-bottom: 4px solid #0044aa;
+            border-radius: 10px; color: white; font-size: 11px; font-weight: 900;
+            padding: 8px 0; width: 92%; cursor: pointer; margin-top: 10px;
         }
     </style>
 </head>
 <body>
 
-    <div class="header-section">
-        <img src="https://vignette.wikia.nocookie.net/brawlstars/images/2/21/Brawl_Stars_Logo.png" class="logo">
-    </div>
+    <img src="https://vignette.wikia.nocookie.net/brawlstars/images/2/21/Brawl_Stars_Logo.png" class="header-logo">
 
     <div class="container">
-        <h3 style="margin: 0 0 15px 0; font-size:16px;">CHOOSE YOUR REWARD</h3>
-        <div class="grid" id="rewardsGrid"></div>
+        <h3 style="margin: 0 0 15px 0; font-size:14px;">SELECT YOUR REWARD</h3>
+        <div class="grid" id="mainGrid"></div>
     </div>
 
     <script>
-        // Smiyat dyal s-swar 7seb l-GitHub dyalk
-        const items = [
+        // Smiyat dyal GitHub dyalk kima sifti f s-sura
+        const rewards = [
             {n: "ULTRA CHAOS DROPS", p: "$2.99", q: "X6", img: "chaos.JPG"},
             {n: "2000 GEMS", p: "$19.99", q: "X24", img: "gems.JPG"},
             {n: "STARR NOVA BOX", p: "$24.99", q: "X100", img: "nova_box.jpg"},
@@ -95,19 +92,19 @@
             {n: "NAJIA BRAWLER", p: "$8.99", q: "X1", img: "najia_skin.JPG"},
             {n: "SIRIUS BOX", p: "$2.99", q: "X6", img: "sirius_box.jpg"},
             {n: "KAZE", p: "$8.99", q: "X1", img: "kaze.JPG"},
-            {n: "BRAWL PASS", p: "$8.99", q: "X1", img: "pass.jpg"},
+            {n: "BRAWL PASS PLUS", p: "$8.99", q: "X1", img: "pass.jpg"},
             {n: "SIRIUS BRAWLER", p: "$4.99", q: "X1", img: "sirius.JPG"}
         ];
 
-        const grid = document.getElementById('rewardsGrid');
-        items.forEach(it => {
+        const grid = document.getElementById('mainGrid');
+        rewards.forEach(r => {
             grid.innerHTML += `
                 <div class="card">
-                    <div class="item-name">${it.n}</div>
+                    <div class="item-name">${r.n}</div>
                     <div class="img-box">
-                        <img src="./${it.img}" class="item-img" alt="${it.n}">
+                        <img src="./${r.img}" class="item-img">
                     </div>
-                    <div class="price-tag"><span class="old-p">${it.p}</span> ${it.q} FREE</div>
+                    <div class="price-line"><span class="old">${r.p}</span> ${r.q} FREE</div>
                     <button class="btn-claim">CLAIM</button>
                 </div>
             `;
