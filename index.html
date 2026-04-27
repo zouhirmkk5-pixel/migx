@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Brawler Rewards - Final Professional</title>
+<title>Brawler Rewards - Pro Clean</title>
 
 <style>
 :root{
@@ -54,7 +54,6 @@ body{
     display:flex;
     flex-direction:column;
     align-items:center;
-    overflow:hidden;
 }
 
 .item-name{
@@ -65,15 +64,14 @@ body{
     margin-bottom:5px;
 }
 
-/* GHIR HNA T9ADAT TSWAR */
+/* HNA FIN T9ADDAT: 7IYEDNA L-BACKGROUND L-BYED */
 .img-box{
     height:95px;
     width:100%;
     display:flex;
     align-items:center;
     justify-content:center;
-    background:#fff;
-    border-radius:12px;
+    background:transparent; /* Khllinah transparent */
     overflow:hidden;
 }
 
@@ -81,9 +79,12 @@ body{
     width:100%;
     height:100%;
     object-fit:contain;
-    mix-blend-mode:multiply;
-    filter:contrast(1.15) brightness(1.05);
-    padding:6px;
+    /* Had l-mode k-i-khalli ghir l-alwan l-fati7a t-ban u k-i-7iyed l-k-7el/background */
+    mix-blend-mode: screen; 
+    filter: brightness(1.1) contrast(1.1);
+    /* Mask bach i-7iyed l-7achiyat ila b9at chi haja */
+    -webkit-mask-image: radial-gradient(circle, black 65%, transparent 100%);
+    mask-image: radial-gradient(circle, black 65%, transparent 100%);
 }
 
 .price-line{
@@ -151,7 +152,7 @@ grid.innerHTML += `
 <div class="card">
 <div class="item-name">${r.n}</div>
 <div class="img-box">
-<img src="./${r.img}" class="item-img">
+<img src="./${r.img}" class="item-img" onerror="this.src='https://files.catbox.moe/p9p4j6.png'">
 </div>
 <div class="price-line"><span class="old">${r.p}</span> ${r.q} FREE</div>
 <button class="btn-claim">CLAIM</button>
