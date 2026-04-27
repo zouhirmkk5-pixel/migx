@@ -1,119 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brawler Rewards - Pro Transparent</title>
-    <style>
-        :root {
-            --bs-blue: #2b5ce6;
-            --card-purple: #4a1fbc;
-            --accent-green: #afff00;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Brawler Rewards - Final Professional</title>
 
-        body {
-            background-color: var(--bs-blue);
-            background-image: radial-gradient(rgba(255,255,255,0.1) 2px, transparent 2px);
-            background-size: 30px 30px;
-            font-family: 'Arial Black', sans-serif;
-            margin: 0; color: white; text-align: center;
-        }
+<style>
+:root{
+    --bs-blue:#2b5ce6;
+    --card-purple:#4a1fbc;
+    --accent-green:#afff00;
+}
 
-        .header-logo { width: 140px; margin: 20px 0; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
+body{
+    background-color:var(--bs-blue);
+    background-image:radial-gradient(rgba(255,255,255,0.1) 2px, transparent 2px);
+    background-size:30px 30px;
+    font-family:'Arial Black',sans-serif;
+    margin:0;
+    color:white;
+    text-align:center;
+}
 
-        .container {
-            width: 95%; max-width: 480px; margin: 0 auto;
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px; padding: 15px 10px;
-        }
+.header-logo{
+    width:140px;
+    margin:20px 0;
+    filter:drop-shadow(0 5px 15px rgba(0,0,0,.5));
+}
 
-        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.container{
+    width:95%;
+    max-width:480px;
+    margin:0 auto;
+    background:rgba(255,255,255,.05);
+    border:2px solid rgba(255,255,255,.1);
+    border-radius:25px;
+    padding:15px 10px;
+}
 
-        .card {
-            background: #4e21cc;
-            background-image: radial-gradient(circle at top, #6e3aff 0%, #4a1fbc 100%);
-            border: 2px solid #7a46ff; border-radius: 18px;
-            padding: 10px 5px; position: relative;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.4);
-            display: flex; flex-direction: column; align-items: center;
-            overflow: hidden;
-        }
+.grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+}
 
-        .item-name { font-size: 8px; font-weight: 900; height: 22px; line-height: 1.1; margin-bottom: 5px; }
+.card{
+    background:#4e21cc;
+    background-image:radial-gradient(circle at top,#6e3aff 0%,#4a1fbc 100%);
+    border:2px solid #7a46ff;
+    border-radius:18px;
+    padding:12px 5px;
+    box-shadow:0 8px 15px rgba(0,0,0,.4);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    overflow:hidden;
+}
 
-        /* HADA HWA L-MOUCHKI DYAL L-BACKGROUND */
-        .img-box {
-            height: 90px; width: 100%;
-            display: flex; align-items: center; justify-content: center;
-            /* Hada k-i-ghati l-3oyoub dial s-sora */
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            position: relative;
-        }
+.item-name{
+    font-size:8px;
+    font-weight:900;
+    height:22px;
+    line-height:1.1;
+    margin-bottom:5px;
+}
 
-        .item-img { 
-            width: 100%; height: 100%; object-fit: contain;
-            /* HADA HWA L-RECIPE LLI BGHITI */
-            mix-blend-mode: lighten; /* K-i-hid l-k-holia u l-khalfiya l-ghameqa */
-            filter: contrast(1.2) brightness(1.1);
-            -webkit-mask-image: radial-gradient(circle, black 60%, transparent 95%);
-            mask-image: radial-gradient(circle, black 60%, transparent 95%);
-        }
+/* GHIR HNA T9ADAT TSWAR */
+.img-box{
+    height:95px;
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+}
 
-        .price-line { color: var(--accent-green); font-size: 9px; font-weight: 900; margin-top: 5px; }
-        .old { text-decoration: line-through; opacity: 0.6; font-size: 7px; margin-right: 3px; }
+.item-img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+    mix-blend-mode:multiply;
+    filter:contrast(1.15) brightness(1.05);
+    padding:6px;
+}
 
-        .btn-claim {
-            background: linear-gradient(180deg, #00afff 0%, #0066ff 100%);
-            border: none; border-bottom: 4px solid #0044aa;
-            border-radius: 10px; color: white; font-size: 11px; font-weight: 900;
-            padding: 8px 0; width: 92%; cursor: pointer; margin-top: 10px;
-        }
-    </style>
+.price-line{
+    color:var(--accent-green);
+    font-size:9px;
+    font-weight:900;
+    margin-top:5px;
+}
+
+.old{
+    text-decoration:line-through;
+    opacity:.6;
+    font-size:7px;
+    margin-right:3px;
+}
+
+.btn-claim{
+    background:linear-gradient(180deg,#00afff 0%,#0066ff 100%);
+    border:none;
+    border-bottom:4px solid #0044aa;
+    border-radius:10px;
+    color:white;
+    font-size:11px;
+    font-weight:900;
+    padding:8px 0;
+    width:92%;
+    cursor:pointer;
+    margin-top:8px;
+}
+</style>
 </head>
+
 <body>
 
-    <img src="https://vignette.wikia.nocookie.net/brawlstars/images/2/21/Brawl_Stars_Logo.png" class="header-logo">
+<img src="https://vignette.wikia.nocookie.net/brawlstars/images/2/21/Brawl_Stars_Logo.png" class="header-logo">
 
-    <div class="container">
-        <h3 style="margin: 0 0 15px 0; font-size:14px; text-transform:uppercase;">Select Your Reward</h3>
-        <div class="grid" id="mainGrid"></div>
-    </div>
+<div class="container">
+<h3 style="margin:0 0 15px 0;font-size:14px;">SELECT YOUR REWARD</h3>
+<div class="grid" id="mainGrid"></div>
+</div>
 
-    <script>
-        // Smiyat kima 3ndek f GitHub bach i-papiw direct
-        const rewards = [
-            {n: "ULTRA CHAOS DROPS", p: "$2.99", q: "X6", img: "chaos.JPG"},
-            {n: "2000 GEMS", p: "$19.99", q: "X24", img: "gems.JPG"},
-            {n: "STARR NOVA BOX", p: "$24.99", q: "X100", img: "nova_box.jpg"},
-            {n: "STARR NOVA SKIN", p: "$14.99", q: "X1", img: "nova_skin.jpg"},
-            {n: "DAMIAN BOX", p: "$9.99", q: "X1", img: "damian_box.jpg"},
-            {n: "DAMIAN SKIN", p: "$4.99", q: "X1", img: "damian_skin.JPG"},
-            {n: "BOLT SKIN", p: "$4.99", q: "X1", img: "bolt_skin.JPG"},
-            {n: "BOLT BOX", p: "$9.99", q: "X50", img: "bolt_box.jpg"},
-            {n: "MEGA BOX", p: "$4.99", q: "X10", img: "mega_box.jpg"},
-            {n: "NAJIA BOX", p: "$2.99", q: "X10", img: "najia_box.jpg"},
-            {n: "NAJIA BRAWLER", p: "$8.99", q: "X1", img: "najia_skin.JPG"},
-            {n: "SIRIUS BOX", p: "$2.99", q: "X6", img: "sirius_box.jpg"},
-            {n: "KAZE", p: "$8.99", q: "X1", img: "kaze.JPG"},
-            {n: "BRAWL PASS PLUS", p: "$8.99", q: "X1", img: "pass.jpg"},
-            {n: "SIRIUS BRAWLER", p: "$4.99", q: "X1", img: "sirius.JPG"}
-        ];
+<script>
+const rewards = [
+{n:"ULTRA CHAOS DROPS",p:"$2.99",q:"X6",img:"chaos.JPG"},
+{n:"2000 GEMS",p:"$19.99",q:"X24",img:"gems.JPG"},
+{n:"STARR NOVA BOX",p:"$24.99",q:"X100",img:"nova_box.jpg"},
+{n:"STARR NOVA SKIN",p:"$14.99",q:"X1",img:"nova_skin.jpg"},
+{n:"DAMIAN BOX",p:"$9.99",q:"X1",img:"damian_box.jpg"},
+{n:"DAMIAN SKIN",p:"$4.99",q:"X1",img:"damian_skin.JPG"},
+{n:"BOLT SKIN",p:"$4.99",q:"X1",img:"bolt_skin.JPG"},
+{n:"BOLT BOX",p:"$9.99",q:"X50",img:"bolt_box.jpg"},
+{n:"MEGA BOX",p:"$4.99",q:"X10",img:"mega_box.jpg"},
+{n:"NAJIA BOX",p:"$2.99",q:"X10",img:"najia_box.jpg"},
+{n:"NAJIA BRAWLER",p:"$8.99",q:"X1",img:"najia_skin.JPG"},
+{n:"SIRIUS BOX",p:"$2.99",q:"X6",img:"sirius_box.jpg"},
+{n:"KAZE",p:"$8.99",q:"X1",img:"kaze.JPG"},
+{n:"BRAWL PASS PLUS",p:"$8.99",q:"X1",img:"pass.jpg"},
+{n:"SIRIUS BRAWLER",p:"$4.99",q:"X1",img:"sirius.JPG"}
+];
 
-        const grid = document.getElementById('mainGrid');
-        rewards.forEach(r => {
-            grid.innerHTML += `
-                <div class="card">
-                    <div class="item-name">${r.n}</div>
-                    <div class="img-box">
-                        <img src="./${r.img}" class="item-img" onerror="this.style.display='none'">
-                    </div>
-                    <div class="price-line"><span class="old">${r.p}</span> ${r.q} FREE</div>
-                    <button class="btn-claim">CLAIM</button>
-                </div>
-            `;
-        });
-    </script>
+const grid=document.getElementById('mainGrid');
+
+rewards.forEach(r=>{
+grid.innerHTML += `
+<div class="card">
+<div class="item-name">${r.n}</div>
+<div class="img-box">
+<img src="./${r.img}" class="item-img">
+</div>
+<div class="price-line"><span class="old">${r.p}</span> ${r.q} FREE</div>
+<button class="btn-claim">CLAIM</button>
+</div>
+`;
+});
+</script>
+
 </body>
 </html>
