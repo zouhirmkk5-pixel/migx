@@ -3,156 +3,152 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brawl Stars Store Clone</title>
+    <title>Brawl Stars Clone</title>
     <style>
+        :root {
+            --bs-blue: #2b5ce6;
+            --bs-purple: #7e4df5;
+            --bs-green: #afff00;
+        }
+
         body {
-            background-color: #2b5ce6; /* Blue asly */
-            font-family: 'Arial Black', 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            color: white;
+            background-color: var(--bs-blue);
+            font-family: 'Arial Black', sans-serif;
+            margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center;
+            color: white; overflow-x: hidden;
         }
 
-        /* Top Notification */
-        .top-notif {
-            background: rgba(0,0,0,0.4);
-            width: 100%;
-            text-align: center;
-            font-size: 11px;
-            padding: 5px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+        /* Header Stats */
+        .stats-wrapper {
+            background: rgba(0,0,0,0.3); border-radius: 15px;
+            display: flex; gap: 30px; padding: 10px 25px; margin: 20px 0;
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+        .stat-item { text-align: center; font-size: 10px; }
+        .stat-val { display: block; font-size: 16px; font-weight: 900; }
+
+        /* Main Container */
+        .container {
+            width: 90%; max-width: 480px; background: rgba(255,255,255,0.05);
+            border: 2px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 15px;
         }
 
-        /* Logo & Stats Box */
-        .header {
-            text-align: center;
-            padding: 20px;
-        }
-        .logo { width: 120px; margin-bottom: 15px; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 
-        .stats-container {
-            background: rgba(0, 0, 0, 0.2);
-            border: 1px solid rgba(255,255,255,0.2);
-            border-radius: 15px;
-            display: flex;
-            justify-content: space-around;
-            padding: 10px;
-            width: 250px;
-            margin: 0 auto;
-        }
-        .stat-box { font-size: 10px; text-align: center; }
-        .stat-value { display: block; font-size: 16px; font-weight: 900; }
-
-        /* Rewards Grid */
-        .main-container {
-            background: rgba(255, 255, 255, 0.05);
-            border: 2px solid rgba(255, 255, 255, 0.15);
-            border-radius: 25px;
-            padding: 15px;
-            width: 90%;
-            max-width: 450px;
-            margin-top: 10px;
-        }
-
-        .grid-title {
-            text-align: center;
-            font-size: 14px;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-        }
-
-        .rewards-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-        }
-
+        /* Card Design */
         .card {
-            background: radial-gradient(circle, #7e4df5 0%, #4a21bc 100%);
-            border: 2px solid #9c7aff;
-            border-radius: 12px;
-            padding: 8px 5px;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            position: relative;
+            background: radial-gradient(circle, #8e66ff 0%, #4a1fbc 100%);
+            border: 2px solid #a385ff; border-radius: 12px;
+            padding: 10px 5px; text-align: center; cursor: pointer;
+            transition: transform 0.1s;
         }
+        .card:active { transform: scale(0.95); }
 
-        .card-name { font-size: 9px; font-weight: bold; margin-bottom: 5px; min-height: 22px; }
-        .card-img { width: 100%; height: 60px; object-fit: contain; margin: 5px 0; }
-        
-        .price-line { font-size: 8px; color: #afff00; margin-bottom: 5px; }
-        .old-price { text-decoration: line-through; opacity: 0.8; margin-right: 2px; }
+        .item-name { font-size: 8px; font-weight: 900; height: 22px; text-transform: uppercase; }
+        .item-img { width: 100%; height: 60px; object-fit: contain; margin: 5px 0; }
+        .price-line { font-size: 8px; color: var(--bs-green); font-weight: bold; }
+        .old-p { text-decoration: line-through; opacity: 0.6; }
 
         .btn-claim {
-            background: linear-gradient(180deg, #009dff 0%, #0056b3 100%);
-            border: 1px solid #00d2ff;
-            border-radius: 5px;
-            color: white;
-            font-size: 10px;
-            font-weight: 900;
-            padding: 6px 0;
-            cursor: pointer;
-            box-shadow: 0 3px 0 #003d80;
+            background: linear-gradient(180deg, #00a2ff 0%, #005fcc 100%);
+            border: 1px solid #00d9ff; border-radius: 4px; color: white;
+            font-size: 10px; font-weight: bold; padding: 6px 0; width: 100%;
+            box-shadow: 0 3px 0 #003a80; margin-top: 5px;
         }
 
-        /* Footer */
-        .footer {
-            background: black;
-            width: 100%;
-            padding: 30px 20px;
-            margin-top: 40px;
-            font-size: 11px;
-            color: #888;
+        /* POPUP MODAL (L-khedma dyal l-video) */
+        .overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); display: none; justify-content: center; align-items: center; z-index: 100;
         }
-        .footer-links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
-        .footer-logo { width: 80px; filter: grayscale(1); margin-top: 20px; }
+        .popup {
+            background: #228b22; border: 4px solid #fff; border-radius: 15px;
+            width: 85%; max-width: 350px; padding: 20px; text-align: center;
+        }
+        .popup h2 { font-size: 18px; margin-bottom: 15px; }
+        .input-tag {
+            width: 90%; padding: 10px; border-radius: 8px; border: none;
+            font-size: 16px; margin-bottom: 15px; text-align: center;
+        }
+        .btn-go {
+            background: #afff00; color: #000; border: none; padding: 10px 30px;
+            border-radius: 8px; font-weight: 900; cursor: pointer;
+        }
+
+        /* Video tutorial sghir */
+        .video-box { width: 100%; border-radius: 10px; margin: 10px 0; border: 2px solid #fff; }
     </style>
 </head>
 <body>
 
-    <div class="top-notif">🔥 <b>BR4WL_K1NG</b> got Chaos Drops! (57m ago)</div>
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Brawl_Stars_logo.svg/1200px-Brawl_Stars_logo.svg.png" style="width:100px; margin-top:20px;">
 
-    <div class="header">
-        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Brawl_Stars_logo.svg/1200px-Brawl_Stars_logo.svg.png" class="logo">
-        <div class="stats-container">
-            <div class="stat-box">CLAIMS TODAY<span class="stat-value">3,105</span></div>
-            <div class="stat-box">ONLINE<span class="stat-value">1,095</span></div>
+    <div class="stats-wrapper">
+        <div class="stat-item">CLAIMS TODAY<span class="stat-val">3,110</span></div>
+        <div class="stat-item">ONLINE<span class="stat-val">1,091</span></div>
+    </div>
+
+    <div class="container">
+        <p style="text-align:center; font-size:12px;">CHOOSE YOUR REWARD</p>
+        <div class="grid">
+            <div class="card" onclick="openPopup()">
+                <div class="item-name">ULTRA CHAOS DROPS</div>
+                <img src="https://i.ibb.co/vzVf6n4/chaos-drop.png" class="item-img">
+                <div class="price-line"><span class="old-p">$2.99</span> X6 FREE</div>
+                <button class="btn-claim">CLAIM</button>
+            </div>
+            <div class="card" onclick="openPopup()">
+                <div class="item-name">2000 GEMS</div>
+                <img src="https://i.ibb.co/V2fXQzD/gems.png" class="item-img">
+                <div class="price-line"><span class="old-p">$19.99</span> X24 FREE</div>
+                <button class="btn-claim">CLAIM</button>
+            </div>
+            <div class="card" onclick="openPopup()">
+                <div class="item-name">STARR NOVA BOX</div>
+                <img src="https://i.ibb.co/8YhG0vX/starr-box.png" class="item-img">
+                <div class="price-line"><span class="old-p">$24.99</span> X100 FREE</div>
+                <button class="btn-claim">CLAIM</button>
+            </div>
+            </div>
+    </div>
+
+    <div class="overlay" id="overlay">
+        <div class="popup">
+            <h2 style="background:#000; padding:5px;">ENTER PLAYER TAG</h2>
+            <input type="text" class="input-tag" placeholder="#PLAYER TAG" id="playerTag">
+            <p style="font-size:10px;">Find your tag in the upper left corner of the game.</p>
+            <div style="background:#444; padding:10px; border-radius:10px; margin-bottom:10px;">
+                <span style="font-size:11px;">STEP 1: LAUNCH BRAWL STARS...</span>
+            </div>
+            <button class="btn-go" onclick="startLoading()">LET'S GO!</button>
+            <div id="loader" style="display:none; margin-top:10px;">LOADING...</div>
         </div>
     </div>
 
-    <div class="main-container">
-        <div class="grid-title">Choose Your Reward</div>
-        <div class="rewards-grid">
-            <div class="card"><div class="card-name">ULTRA CHAOS DROPS</div><img src="https://i.ibb.co/vzVf6n4/chaos-drop.png" class="card-img"><div class="price-line"><span class="old-price">$2.99</span> X6 FREE</div><button class="btn-claim">CLAIM</button></div>
-            <div class="card"><div class="card-name">2000 GEMS</div><img src="https://i.ibb.co/V2fXQzD/gems.png" class="card-img"><div class="price-line"><span class="old-price">$19.99</span> X24 FREE</div><button class="btn-claim">CLAIM</button></div>
-            <div class="card"><div class="card-name">STARR NOVA BOX</div><img src="https://i.ibb.co/8YhG0vX/starr-box.png" class="card-img"><div class="price-line"><span class="old-price">$24.99</span> X100 FREE</div><button class="btn-claim">CLAIM</button></div>
-            
-            <div class="card"><div class="card-name">STARR NOVA SKIN</div><img src="https://i.ibb.co/F4pYmC0/nova-skin.png" class="card-img"><div class="price-line"><span class="old-price">$14.99</span> X1 FREE</div><button class="btn-claim">CLAIM</button></div>
-            <div class="card"><div class="card-name">NOVA DROP</div><img src="https://i.ibb.co/sW2m9M9/nova-drop.png" class="card-img"><div class="price-line"><span class="old-price">$1.99</span> X10 FREE</div><button class="btn-claim">CLAIM</button></div>
-            <div class="card"><div class="card-name">DAMIAN BOX</div><img src="https://i.ibb.co/G3XmY7P/damian-box.png" class="card-img"><div class="price-line"><span class="old-price">$9.99</span> X1 FREE</div><button class="btn-claim">CLAIM</button></div>
+    <script>
+        function openPopup() {
+            document.getElementById('overlay').style.display = 'flex';
+        }
 
-            <div class="card"><div class="card-name">SIRIUS BOX</div><img src="https://i.ibb.co/SR30D5y/sirius-box.png" class="card-img"><div class="price-line"><span class="old-price">$2.99</span> X6 FREE</div><button class="btn-claim">CLAIM</button></div>
-            <div class="card"><div class="card-name">KAZE BRAWLER</div><img src="https://i.ibb.co/6y4t8Xn/kaze.png" class="card-img"><div class="price-line"><span class="old-price">$8.99</span> X1 FREE</div><button class="btn-claim">CLAIM</button></div>
-            <div class="card"><div class="card-name">BRAWL PASS PLUS</div><img src="https://i.ibb.co/D8n9h1P/brawl-pass.png" class="card-img"><div class="price-line"><span class="old-price">$8.99</span> X1 FREE</div><button class="btn-claim">CLAIM</button></div>
-        </div>
-    </div>
+        function startLoading() {
+            const btn = document.querySelector('.btn-go');
+            const loader = document.getElementById('loader');
+            const tag = document.getElementById('playerTag').value;
 
-    <div class="footer">
-        <div class="footer-links">
-            <div>Terms of Service</div>
-            <div>Privacy Policy</div>
-            <div>Parent's Guide</div>
-            <div>Safe and Fair Play</div>
-        </div>
-        <div style="text-align:right">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Supercell_logo.svg/1200px-Supercell_logo.svg.png" class="footer-logo">
-        </div>
-    </div>
+            if(tag.length < 3) { alert('Please enter a valid tag!'); return; }
+
+            btn.style.display = 'none';
+            loader.style.display = 'block';
+
+            // Simulate l-server error 404 lli kān f l-video
+            setTimeout(() => {
+                loader.innerHTML = "<span style='color:red'>SERVER ERROR 404</span><br>PLEASE TRY AGAIN";
+                setTimeout(() => {
+                    window.location.href = "https://your-cpa-link.com"; // Hna hot l-link dyal l-offers
+                }, 2000);
+            }, 3000);
+        }
+    </script>
 
 </body>
 </html>
