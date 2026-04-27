@@ -1,152 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>99Nights Rewards</title>
+    <title>Brawl Stars Rewards</title>
     <style>
-        :root {
-            --primary: #8b5cf6;
-            --secondary: #d946ef;
-            --bg-dark: #0f172a;
-            --card-bg: rgba(255, 255, 255, 0.05);
-        }
-
         body {
-            background-color: var(--bg-dark);
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #2b57e6; /* Blue background */
+            font-family: 'Arial Black', sans-serif;
             margin: 0;
+            padding: 10px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
         }
 
-        .hero-section {
-            text-align: center;
-            padding: 50px 20px;
-            background: linear-gradient(180deg, rgba(139, 92, 246, 0.2) 0%, rgba(15, 23, 42, 0) 100%);
+        .header-logo {
+            width: 150px;
+            margin: 20px 0;
+        }
+
+        /* Live Feed */
+        .live-banner {
+            background: rgba(0,0,0,0.5);
             width: 100%;
-        }
-
-        .title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 10px;
-        }
-
-        .rewards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            max-width: 1000px;
-            width: 90%;
-            padding: 20px;
-        }
-
-        .reward-card {
-            background: var(--card-bg);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 20px;
-            padding: 25px;
             text-align: center;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .reward-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-        }
-
-        .gem-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            display: block;
-        }
-
-        .amount {
-            font-size: 1.8rem;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        .reward-button {
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
             color: white;
-            border: none;
-            padding: 12px 30px;
-            border-radius: 30px;
+            font-size: 12px;
+            padding: 5px 0;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        /* Container dyal l-items */
+        .rewards-container {
+            background: rgba(255, 255, 255, 0.1);
+            border: 3px solid rgba(255, 255, 255, 0.2);
+            border-radius: 20px;
+            padding: 15px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 Columns */
+            gap: 10px;
+            max-width: 500px;
+        }
+
+        /* Card dyal Reward */
+        .reward-card {
+            background: linear-gradient(180deg, #7c4dff 0%, #512da8 100%);
+            border: 2px solid #9c7aff;
+            border-radius: 12px;
+            padding: 10px 5px;
+            text-align: center;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .item-name {
+            color: white;
+            font-size: 10px;
             font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            margin-top: 15px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: opacity 0.2s;
+            margin-bottom: 5px;
+            height: 25px;
         }
 
-        .reward-button:hover {
-            opacity: 0.9;
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+        .item-img {
+            width: 100%;
+            height: auto;
+            max-width: 70px;
+            margin: 5px auto;
+            /* Hna t-zid "filter: drop-shadow" bach t-ban high quality */
+            filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.3));
         }
 
-        .badge {
-            position: absolute;
-            top: 10px;
-            right: -30px;
-            background: #ef4444;
-            padding: 5px 40px;
-            transform: rotate(45deg);
-            font-size: 0.7rem;
+        .item-price {
+            color: #afff00; /* Neon Green text */
+            font-size: 9px;
+            margin: 5px 0;
+            text-decoration: line-through;
+            display: block;
+        }
+
+        .free-label {
+            color: #afff00;
+            font-size: 10px;
             font-weight: bold;
         }
+
+        .claim-btn {
+            background: linear-gradient(180deg, #0091ff 0%, #0056b3 100%);
+            border: 1px solid #00d2ff;
+            border-radius: 5px;
+            color: white;
+            font-weight: bold;
+            padding: 8px 0;
+            margin-top: 8px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 12px;
+            box-shadow: 0 3px 0 #003d80;
+        }
+
+        .claim-btn:active {
+            transform: translateY(2px);
+            box-shadow: none;
+        }
+
     </style>
 </head>
 <body>
 
-    <div class="hero-section">
-        <h1 class="title">99NIGHTS EXCLUSIVE REWARDS</h1>
-        <p>Select your pack and claim your gems instantly!</p>
-    </div>
+    <div class="live-banner">🔥 <b>KazeULTRA</b> got Kaze Ultra Legendary Brawlers! (36m ago)</div>
+    
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Brawl_Stars_logo.svg/1200px-Brawl_Stars_logo.svg.png" class="header-logo" alt="Brawl Stars">
 
-    <div class="rewards-grid">
+    <div class="rewards-container">
+        
         <div class="reward-card">
-            <span class="gem-icon">💎</span>
-            <span class="amount">1,000 GEMS</span>
-            <p>Starter Pack</p>
-            <button class="reward-button">Claim Now</button>
+            <div class="item-name">ULTRA CHAOS DROPS</div>
+            <img src="https://i.ibb.co/vzVf6n4/chaos-drop.png" class="item-img" alt="Chaos Drop">
+            <div>
+                <span class="item-price">$2.99</span>
+                <span class="free-label">X6 FREE</span>
+            </div>
+            <button class="claim-btn">CLAIM</button>
         </div>
 
         <div class="reward-card">
-            <div class="badge">POPULAR</div>
-            <span class="gem-icon">💎💎</span>
-            <span class="amount">5,000 GEMS</span>
-            <p>Pro Gamer Pack</p>
-            <button class="reward-button">Claim Now</button>
+            <div class="item-name">2000 GEMS</div>
+            <img src="https://i.ibb.co/V2fXQzD/gems.png" class="item-img" alt="Gems">
+            <div>
+                <span class="item-price">$19.99</span>
+                <span class="free-label">X24 FREE</span>
+            </div>
+            <button class="claim-btn">CLAIM</button>
         </div>
 
         <div class="reward-card">
-            <span class="gem-icon">💎💎💎</span>
-            <span class="amount">10,000 GEMS</span>
-            <p>Ultimate Pack</p>
-            <button class="reward-button">Claim Now</button>
+            <div class="item-name">STARR NOVA BOX</div>
+            <img src="https://i.ibb.co/8YhG0vX/starr-box.png" class="item-img" alt="Starr Box">
+            <div>
+                <span class="item-price">$24.99</span>
+                <span class="free-label">X100 FREE</span>
+            </div>
+            <button class="claim-btn">CLAIM</button>
         </div>
 
-        <div class="reward-card">
-            <span class="gem-icon">👑</span>
-            <span class="amount">50,000 GEMS</span>
-            <p>Legendary Pack</p>
-            <button class="reward-button">Claim Now</button>
         </div>
-    </div>
 
 </body>
 </html>
