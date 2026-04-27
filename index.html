@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brawler Rewards - Final Professional Fix</title>
+    <title>Brawler Rewards - Official</title>
     <style>
         :root {
             --bs-blue: #2b5ce6;
@@ -65,7 +65,7 @@
 </head>
 <body>
 
-    <div class="live-bar">🔥 <b>KazeULTRA</b> just claimed <span>Kaze Ultra Legendary!</span></div>
+    <div class="live-bar">🔥 <b>Zouhirmkk5</b> got <span>KAZE ULTRA!</span> (just now)</div>
 
     <img src="https://vignette.wikia.nocookie.net/brawlstars/images/2/21/Brawl_Stars_Logo.png/revision/latest" class="logo">
 
@@ -85,7 +85,7 @@
     </footer>
 
     <script>
-        // L-Link l-i-khedem darori: User/Repo/Branch/File
+        // L-Link l-i-khedem darori 3la hsab l-folder dyalk f GitHub
         const baseUrl = "https://raw.githubusercontent.com/zouhirmkk5-pixel/zouhirmkk5-pixel/main/";
 
         const items = [
@@ -112,9 +112,8 @@
 
         const grid = document.getElementById('mainGrid');
         items.forEach((it) => {
-            const isKeys = it.n === "KEYS";
             grid.innerHTML += `
-                <div class="card" ${isKeys ? 'style="grid-column: span 3; width: 32%; margin: 0 auto;"' : ''}>
+                <div class="card">
                     <div class="item-name">${it.n}</div>
                     <img src="${baseUrl}${it.img}" class="item-img" alt="${it.n}">
                     <div class="price-line"><span class="old">${it.p}</span> ${it.q} FREE</div>
