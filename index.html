@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brawler Rewards - Transparent Pro</title>
+    <title>Brawler Rewards - Transparent</title>
     <style>
         :root {
             --bs-blue: #2b5ce6;
@@ -44,16 +44,17 @@
 
         .img-box {
             height: 90px; display: flex; align-items: center; justify-content: center;
-            margin-bottom: 8px; position: relative;
+            margin-bottom: 8px;
         }
 
-        /* HADI HIA L-FAZA DYAL CHROMA KEY */
+        /* HADA HWA L-MOUCHKI L-KABIR: TRANS-PARENT BACKGROUND */
         .item-img { 
-            width: 100%; max-height: 100%; object-fit: contain;
-            /* Kat-khalli s-sora transparent f l-alwan l-ghameqa */
-            mask-image: radial-gradient(circle, black 60%, transparent 100%);
-            -webkit-mask-image: radial-gradient(circle, black 60%, transparent 100%);
-            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)) brightness(1.1);
+            width: 110%; /* Zdna l-7ajm chwiya */
+            max-height: 110%; 
+            object-fit: contain;
+            /* Hada k-i-7yed l-khalfya l-ghameqa u k-i-khalli ghir l-reward */
+            mix-blend-mode: screen; 
+            filter: brightness(1.2) contrast(1.1);
         }
 
         .price-tag { color: var(--accent-green); font-size: 10px; font-weight: 900; margin-bottom: 8px; }
@@ -64,6 +65,7 @@
             border: none; border-bottom: 3px solid #0044aa;
             border-radius: 8px; color: white; font-size: 12px; font-weight: 900;
             padding: 8px 0; width: 90%; cursor: pointer;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
     </style>
 </head>
@@ -79,7 +81,7 @@
     </div>
 
     <script>
-        // Smiyat m-faksiyn 3la 7sab s-sora dyal GitHub lli sifti
+        // Smiyat dyal s-swar kima f l-image dyal GitHub dyalk
         const items = [
             {n: "ULTRA CHAOS DROPS", p: "$2.99", q: "X6", img: "chaos.JPG"},
             {n: "2000 GEMS", p: "$19.99", q: "X24", img: "gems.JPG"},
