@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brawler Rewards - Full 18 Items</title>
+    <title>Brawler Rewards - Official Landing Page</title>
     <style>
         :root {
             --bs-blue: #2b5ce6;
@@ -13,13 +13,23 @@
 
         body {
             background-color: var(--bs-blue);
+            /* Background dyal s-sora l-asliya */
             background-image: radial-gradient(rgba(255,255,255,0.1) 2px, transparent 2px);
             background-size: 30px 30px;
             font-family: 'Arial Black', sans-serif;
             margin: 0; color: white; text-align: center;
         }
 
-        .logo { width: 140px; margin: 25px 0; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); }
+        .live-bar { background: rgba(0,0,0,0.5); padding: 8px 0; font-size: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .live-bar span { color: #ff66cc; }
+
+        .logo { width: 140px; margin: 20px 0; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); }
+
+        .stats-panel {
+            background: rgba(0,0,0,0.3); border: 2px solid rgba(255,255,255,0.2);
+            border-radius: 20px; display: inline-flex; gap: 30px; padding: 12px 30px; margin-bottom: 20px;
+        }
+        .stat-val { display: block; font-size: 18px; font-weight: 900; }
 
         .container {
             width: 95%; max-width: 480px; margin: 0 auto;
@@ -31,6 +41,7 @@
 
         .card {
             background: var(--card-purple);
+            /* Effet Sunburst lli kan f l-vido */
             background-image: radial-gradient(circle, rgba(142, 102, 255, 0.9) 0%, transparent 75%), 
                               repeating-conic-gradient(from 0deg, rgba(255,255,255,0.08) 0deg 15deg, transparent 15deg 30deg);
             border: 2px solid #a385ff; border-radius: 15px;
@@ -49,24 +60,39 @@
             font-size: 11px; font-weight: 900; padding: 8px 0; width: 100%;
             box-shadow: 0 3px 0 #003a80; cursor: pointer;
         }
+
+        footer { background: #000; padding: 40px 20px; margin-top: 50px; text-align: left; font-size: 10px; color: #888; }
+        .sc-logo { width: 95px; float: right; filter: grayscale(1); opacity: 0.8; }
     </style>
 </head>
 <body>
 
+    <div class="live-bar" id="notif">🔥 <b>Zeneex</b> got <span>2000 GEMS!</span> (just now)</div>
+
     <img src="https://vignette.wikia.nocookie.net/brawlstars/images/2/21/Brawl_Stars_Logo.png/revision/latest" class="logo">
 
-    <div class="container">
-        <div style="font-size:15px; font-weight:900; margin-bottom:15px;">CHOOSE YOUR REWARD</div>
-        <div class="grid" id="rewardsGrid"></div>
+    <div class="stats-panel">
+        <div>CLAIMS TODAY<span class="stat-val">3,122</span></div>
+        <div>ONLINE<span class="stat-val">1,088</span></div>
     </div>
 
+    <div class="container">
+        <div style="font-size:15px; font-weight:900; margin-bottom:15px;">SELECT YOUR REWARD</div>
+        <div class="grid" id="mainGrid"></div>
+    </div>
+
+    <footer>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Supercell_logo.svg/1200px-Supercell_logo.svg.png" class="sc-logo">
+        <p>Terms of Service | Privacy Policy | Parent's Guide<br>Safe and Fair Play | Supercell Oy</p>
+    </footer>
+
     <script>
-        // --- CONFIGURATION ---
-        const user = "YOUR_GITHUB_USERNAME"; 
-        const repo = "YOUR_REPO_NAME";       
+        // BEDDEL HDO B SMYATK
+        const user = "YOUR_GITHUB_USERNAME";
+        const repo = "YOUR_REPO_NAME";
         const baseUrl = `https://raw.githubusercontent.com/${user}/${repo}/main/`;
 
-        // 18 Items kamlin b tartib u b l-extensions dyalhom mn GitHub
+        // 18 items kamlin m-fiksiyn b smiyat s-swar dyalk
         const items = [
             {n: "ULTRA CHAOS DROPS", p: "$2.99", img: "chaos.JPG"},
             {n: "2000 GEMS", p: "$19.99", img: "gems.JPG"},
@@ -88,13 +114,14 @@
             {n: "KEYS", p: "$2.99", img: "keys.jpg"}
         ];
 
-        const container = document.getElementById('rewardsGrid');
-        items.forEach(item => {
-            container.innerHTML += `
-                <div class="card">
-                    <div class="item-name">${item.n}</div>
-                    <img src="${baseUrl}${item.img}" class="item-img" onerror="this.src='https://via.placeholder.com/150?text=Error'">
-                    <div class="price-line"><span class="old">${item.p}</span> FREE</div>
+        const grid = document.getElementById('mainGrid');
+        items.forEach((it, index) => {
+            let style = (it.n === "KEYS") ? 'style="grid-column: span 3; width: 32.5%; margin: 0 auto;"' : '';
+            grid.innerHTML += `
+                <div class="card" ${it.n === "KEYS" ? 'style="grid-column: span 3; width: 32%; margin: 0 auto;"' : ''}>
+                    <div class="item-name">${it.n}</div>
+                    <img src="${baseUrl}${it.img}" class="item-img" alt="${it.n}">
+                    <div class="price-line"><span class="old">${it.p}</span> FREE</div>
                     <button class="btn-claim">CLAIM</button>
                 </div>
             `;
