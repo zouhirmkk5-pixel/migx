@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brawler Rewards - Official Landing Page</title>
+    <title>Brawler Rewards - Final Fix</title>
     <style>
         :root {
             --bs-blue: #2b5ce6;
@@ -65,7 +65,7 @@
 </head>
 <body>
 
-    <div class="live-bar" id="notif">🔥 <b>KazeULTRA</b> got <span>Kaze Ultra Legendary!</span> (just now)</div>
+    <div class="live-bar">🔥 <b>KazeULTRA</b> just claimed <span>Kaze Ultra Legendary!</span></div>
 
     <img src="https://vignette.wikia.nocookie.net/brawlstars/images/2/21/Brawl_Stars_Logo.png/revision/latest" class="logo">
 
@@ -85,10 +85,8 @@
     </footer>
 
     <script>
-        // SMART FIX: Khedemna b link "raw" bach tsawr i-pāraw 100%
-        const user = "zouhirmkk5-pixel";
-        const repo = "main"; // Beddelha ila kenti m-smi l-repo smya khra
-        const baseUrl = `https://raw.githubusercontent.com/${user}/${repo}/main/`;
+        // L-FIX L-KABIR: Smiyat exact dyal l-account dyalk
+        const baseUrl = "https://raw.githubusercontent.com/zouhirmkk5-pixel/pixel/main/";
 
         const items = [
             {n: "ULTRA CHAOS DROPS", p: "$2.99", q: "X6", img: "chaos.JPG"},
@@ -117,7 +115,7 @@
             grid.innerHTML += `
                 <div class="card" ${isKeys ? 'style="grid-column: span 3; width: 32%; margin: 0 auto;"' : ''}>
                     <div class="item-name">${it.n}</div>
-                    <img src="${baseUrl}${it.img}" class="item-img" onerror="this.src='https://via.placeholder.com/150?text=Error'">
+                    <img src="${baseUrl}${it.img}" class="item-img" onerror="this.src='https://via.placeholder.com/150?text=Image+Error'">
                     <div class="price-line"><span class="old">${it.p}</span> ${it.q} FREE</div>
                     <button class="btn-claim">CLAIM</button>
                 </div>
