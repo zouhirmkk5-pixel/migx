@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brawler Rewards - Transparent Pro</title>
+    <title>Brawler Rewards - Colors Fixed</title>
     <style>
         :root {
             --bs-blue: #2b5ce6;
@@ -19,24 +19,8 @@
             margin: 0; color: white; text-align: center;
         }
 
-        .header-section {
-            background: linear-gradient(180deg, rgba(0,0,0,0.2) 0%, transparent 100%);
-            padding: 20px 0;
-        }
-
-        .logo { width: 160px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
-
-        .stats-container {
-            background: rgba(0, 0, 0, 0.4);
-            border-radius: 15px;
-            display: inline-flex;
-            padding: 10px 25px;
-            gap: 40px;
-            margin: 15px 0;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .stat-item span { display: block; font-size: 20px; font-weight: 900; color: #fff; }
-        .stat-item label { font-size: 10px; color: #aaa; text-transform: uppercase; }
+        .header-section { padding: 20px 0; }
+        .logo { width: 140px; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
 
         .container {
             width: 95%; max-width: 500px; margin: 0 auto;
@@ -53,21 +37,20 @@
             border: 2px solid #7a46ff; border-radius: 18px;
             padding: 10px 5px; position: relative;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            transition: transform 0.2s;
         }
 
         .item-name { font-size: 9px; font-weight: 900; height: 25px; line-height: 1.1; margin-bottom: 5px; }
 
-        /* L-FAZA DYAL TRANSPARENCY HIA HADI */
         .img-box {
-            height: 85px; display: flex; align-items: center; justify-content: center;
-            margin-bottom: 8px; position: relative;
+            height: 90px; display: flex; align-items: center; justify-content: center;
+            margin-bottom: 8px; border-radius: 10px; overflow: hidden;
+            background: rgba(255,255,255,0.05); /* Khalfya khafifa bach t-byen s-sora */
         }
+        
         .item-img { 
-            width: 95%; max-height: 100%; object-fit: contain;
-            /* Kat-7iyd ay khalfya ila kounti m-qad s-swar PNG */
-            mix-blend-mode: multiply; 
-            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.4));
+            width: 100%; max-height: 100%; object-fit: contain;
+            /* 7iyedna multiply bach l-alwan i-rj3o l-aslhom */
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
         }
 
         .price-tag { color: var(--accent-green); font-size: 10px; font-weight: 900; margin-bottom: 8px; }
@@ -78,10 +61,7 @@
             border: none; border-bottom: 3px solid #0044aa;
             border-radius: 8px; color: white; font-size: 12px; font-weight: 900;
             padding: 8px 0; width: 90%; cursor: pointer;
-            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
         }
-
-        footer { margin-top: 40px; padding: 20px; font-size: 10px; color: rgba(255,255,255,0.4); }
     </style>
 </head>
 <body>
@@ -90,21 +70,13 @@
         <img src="https://vignette.wikia.nocookie.net/brawlstars/images/2/21/Brawl_Stars_Logo.png" class="logo">
     </div>
 
-    <div class="stats-container">
-        <div class="stat-item"><span>3,105</span><label>Claims</label></div>
-        <div class="stat-item"><span>1,095</span><label>Online</label></div>
-    </div>
-
     <div class="container">
-        <h3 style="margin-top:0; font-size:16px;">CHOOSE YOUR REWARD</h3>
+        <h3 style="margin: 0 0 15px 0; font-size:16px;">SELECT YOUR REWARD</h3>
         <div class="grid" id="rewardsGrid"></div>
     </div>
 
-    <footer>© Supercell | Privacy Policy</footer>
-
     <script>
-        const baseUrl = "./"; // K-i-khdem local m3a index.html
-        const rewards = [
+        const items = [
             {n: "ULTRA CHAOS DROPS", p: "$2.99", q: "X6", img: "chaos.JPG"},
             {n: "2000 GEMS", p: "$19.99", q: "X24", img: "gems.JPG"},
             {n: "STARR NOVA BOX", p: "$24.99", q: "X100", img: "nova_box.jpg"},
@@ -123,14 +95,14 @@
         ];
 
         const grid = document.getElementById('rewardsGrid');
-        rewards.forEach(r => {
+        items.forEach(it => {
             grid.innerHTML += `
                 <div class="card">
-                    <div class="item-name">${r.n}</div>
+                    <div class="item-name">${it.n}</div>
                     <div class="img-box">
-                        <img src="${baseUrl}${r.img}" class="item-img" alt="${r.n}">
+                        <img src="./${it.img}" class="item-img" alt="${it.n}">
                     </div>
-                    <div class="price-tag"><span class="old-p">${r.p}</span> ${r.q} FREE</div>
+                    <div class="price-tag"><span class="old-p">${it.p}</span> ${it.q} FREE</div>
                     <button class="btn-claim">CLAIM</button>
                 </div>
             `;
