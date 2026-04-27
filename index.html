@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brawl Stars Rewards</title>
+    <title>Brawl Stars Rewards Store</title>
     <style>
         body {
-            background-color: #2b57e6; /* Blue background */
-            font-family: 'Arial Black', sans-serif;
+            background: #2349d3; /* Dark Blue asly */
+            font-family: 'Arial Black', 'Arial', sans-serif;
             margin: 0;
             padding: 10px;
             display: flex;
@@ -16,91 +16,97 @@
         }
 
         .header-logo {
-            width: 150px;
-            margin: 20px 0;
+            width: 130px;
+            margin: 15px 0;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
         }
 
-        /* Live Feed */
-        .live-banner {
-            background: rgba(0,0,0,0.5);
-            width: 100%;
-            text-align: center;
-            color: white;
-            font-size: 12px;
-            padding: 5px 0;
-            border-radius: 5px;
-            margin-bottom: 15px;
-        }
-
-        /* Container dyal l-items */
-        .rewards-container {
-            background: rgba(255, 255, 255, 0.1);
-            border: 3px solid rgba(255, 255, 255, 0.2);
+        /* Live Notification Bar */
+        .live-feed {
+            background: rgba(0, 0, 0, 0.4);
+            color: #fff;
+            font-size: 11px;
+            padding: 6px 15px;
             border-radius: 20px;
-            padding: 15px;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr); /* 3 Columns */
-            gap: 10px;
-            max-width: 500px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.1);
         }
 
-        /* Card dyal Reward */
-        .reward-card {
-            background: linear-gradient(180deg, #7c4dff 0%, #512da8 100%);
-            border: 2px solid #9c7aff;
-            border-radius: 12px;
+        /* Main Grid Container */
+        .rewards-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            max-width: 450px;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.15);
+            padding: 12px;
+            border-radius: 15px;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Card Style */
+        .card {
+            background: linear-gradient(180deg, #6c3df5 0%, #4a1fbc 100%);
+            border: 2px solid #8e66ff;
+            border-radius: 10px;
             padding: 10px 5px;
             text-align: center;
-            position: relative;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            position: relative;
+            box-shadow: 0 4px 0 rgba(0,0,0,0.2);
         }
 
-        .item-name {
+        .card-title {
             color: white;
-            font-size: 10px;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 5px;
-            height: 25px;
-        }
-
-        .item-img {
-            width: 100%;
-            height: auto;
-            max-width: 70px;
-            margin: 5px auto;
-            /* Hna t-zid "filter: drop-shadow" bach t-ban high quality */
-            filter: drop-shadow(0px 4px 4px rgba(0,0,0,0.3));
-        }
-
-        .item-price {
-            color: #afff00; /* Neon Green text */
             font-size: 9px;
-            margin: 5px 0;
-            text-decoration: line-through;
-            display: block;
+            font-weight: 900;
+            margin-bottom: 5px;
+            height: 24px;
+            line-height: 1.1;
+            text-transform: uppercase;
         }
 
-        .free-label {
+        .card-img {
+            width: 100%;
+            max-width: 65px;
+            height: 65px;
+            margin: 5px auto;
+            object-fit: contain;
+            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.4));
+        }
+
+        .price-tag {
+            margin: 5px 0;
+        }
+
+        .old-price {
+            color: #afff00;
+            font-size: 8px;
+            text-decoration: line-through;
+            margin-right: 3px;
+        }
+
+        .free-text {
             color: #afff00;
             font-size: 10px;
             font-weight: bold;
         }
 
+        /* Claim Button */
         .claim-btn {
-            background: linear-gradient(180deg, #0091ff 0%, #0056b3 100%);
-            border: 1px solid #00d2ff;
-            border-radius: 5px;
+            background: linear-gradient(180deg, #00a2ff 0%, #005fcc 100%);
+            border: 1px solid #00d9ff;
+            border-radius: 4px;
             color: white;
+            font-size: 11px;
             font-weight: bold;
-            padding: 8px 0;
-            margin-top: 8px;
+            padding: 6px 0;
             cursor: pointer;
-            text-transform: uppercase;
-            font-size: 12px;
-            box-shadow: 0 3px 0 #003d80;
+            box-shadow: 0 3px 0 #003a80;
+            transition: 0.1s;
         }
 
         .claim-btn:active {
@@ -108,43 +114,87 @@
             box-shadow: none;
         }
 
+        /* Label khass l-popular items */
+        .special-tag {
+            background: #ff0000;
+            color: white;
+            font-size: 7px;
+            padding: 2px 5px;
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            border-radius: 3px;
+        }
     </style>
 </head>
 <body>
 
-    <div class="live-banner">🔥 <b>KazeULTRA</b> got Kaze Ultra Legendary Brawlers! (36m ago)</div>
-    
-    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Brawl_Stars_logo.svg/1200px-Brawl_Stars_logo.svg.png" class="header-logo" alt="Brawl Stars">
+    <div class="live-feed">🔥 <b>KazeULTRA</b> got Kaze Ultra Legendary Brawlers! (36m ago)</div>
 
-    <div class="rewards-container">
+    <img src="https://upload.wikimedia.org/wikipedia/en/thumb/7/7a/Brawl_Stars_logo.svg/1200px-Brawl_Stars_logo.svg.png" class="header-logo">
+
+    <div class="rewards-grid">
         
-        <div class="reward-card">
-            <div class="item-name">ULTRA CHAOS DROPS</div>
-            <img src="https://i.ibb.co/vzVf6n4/chaos-drop.png" class="item-img" alt="Chaos Drop">
-            <div>
-                <span class="item-price">$2.99</span>
-                <span class="free-label">X6 FREE</span>
-            </div>
+        <div class="card">
+            <div class="card-title">ULTRA CHAOS<br>DROPS</div>
+            <img src="https://i.ibb.co/vzVf6n4/chaos-drop.png" class="card-img">
+            <div class="price-tag"><span class="old-price">$2.99</span><span class="free-text">X6 FREE</span></div>
             <button class="claim-btn">CLAIM</button>
         </div>
 
-        <div class="reward-card">
-            <div class="item-name">2000 GEMS</div>
-            <img src="https://i.ibb.co/V2fXQzD/gems.png" class="item-img" alt="Gems">
-            <div>
-                <span class="item-price">$19.99</span>
-                <span class="free-label">X24 FREE</span>
-            </div>
+        <div class="card">
+            <div class="card-title">2000 GEMS</div>
+            <img src="https://i.ibb.co/V2fXQzD/gems.png" class="card-img">
+            <div class="price-tag"><span class="old-price">$19.99</span><span class="free-text">X24 FREE</span></div>
             <button class="claim-btn">CLAIM</button>
         </div>
 
-        <div class="reward-card">
-            <div class="item-name">STARR NOVA BOX</div>
-            <img src="https://i.ibb.co/8YhG0vX/starr-box.png" class="item-img" alt="Starr Box">
-            <div>
-                <span class="item-price">$24.99</span>
-                <span class="free-label">X100 FREE</span>
-            </div>
+        <div class="card">
+            <div class="card-title">STARR NOVA BOX</div>
+            <img src="https://i.ibb.co/8YhG0vX/starr-box.png" class="card-img">
+            <div class="price-tag"><span class="old-price">$24.99</span><span class="free-text">X100 FREE</span></div>
+            <button class="claim-btn">CLAIM</button>
+        </div>
+
+        <div class="card">
+            <div class="card-title">STARR NOVA SKIN</div>
+            <img src="https://i.ibb.co/F4pYmC0/nova-skin.png" class="card-img">
+            <div class="price-tag"><span class="old-price">$14.99</span><span class="free-text">X1 FREE</span></div>
+            <button class="claim-btn">CLAIM</button>
+        </div>
+
+        <div class="card">
+            <div class="card-title">NOVA DROP</div>
+            <img src="https://i.ibb.co/sW2m9M9/nova-drop.png" class="card-img">
+            <div class="price-tag"><span class="old-price">$1.99</span><span class="free-text">X10 FREE</span></div>
+            <button class="claim-btn">CLAIM</button>
+        </div>
+
+        <div class="card">
+            <div class="card-title">DAMIAN BOX</div>
+            <img src="https://i.ibb.co/G3XmY7P/damian-box.png" class="card-img">
+            <div class="price-tag"><span class="old-price">$9.99</span><span class="free-text">X1 FREE</span></div>
+            <button class="claim-btn">CLAIM</button>
+        </div>
+
+        <div class="card">
+            <div class="card-title">DAMIAN SKIN</div>
+            <img src="https://i.ibb.co/5R0vL0T/damian-skin.png" class="card-img">
+            <div class="price-tag"><span class="old-price">$4.99</span><span class="free-text">X1 FREE</span></div>
+            <button class="claim-btn">CLAIM</button>
+        </div>
+
+        <div class="card">
+            <div class="card-title">BOLT SKIN</div>
+            <img src="https://i.ibb.co/m0fH4Y3/bolt-skin.png" class="card-img">
+            <div class="price-tag"><span class="old-price">$4.99</span><span class="free-text">X1 FREE</span></div>
+            <button class="claim-btn">CLAIM</button>
+        </div>
+
+        <div class="card">
+            <div class="card-title">BOLT BOX</div>
+            <img src="https://i.ibb.co/9G0z6vB/bolt-box.png" class="card-img">
+            <div class="price-tag"><span class="old-price">$9.99</span><span class="free-text">X50 FREE</span></div>
             <button class="claim-btn">CLAIM</button>
         </div>
 
