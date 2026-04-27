@@ -13,7 +13,6 @@
 
         body {
             background-color: var(--bs-blue);
-            /* Background dyal s-sora l-asliya */
             background-image: radial-gradient(rgba(255,255,255,0.1) 2px, transparent 2px);
             background-size: 30px 30px;
             font-family: 'Arial Black', sans-serif;
@@ -41,7 +40,6 @@
 
         .card {
             background: var(--card-purple);
-            /* Effet Sunburst lli kan f l-vido */
             background-image: radial-gradient(circle, rgba(142, 102, 255, 0.9) 0%, transparent 75%), 
                               repeating-conic-gradient(from 0deg, rgba(255,255,255,0.08) 0deg 15deg, transparent 15deg 30deg);
             border: 2px solid #a385ff; border-radius: 15px;
@@ -67,7 +65,7 @@
 </head>
 <body>
 
-    <div class="live-bar" id="notif">🔥 <b>Zeneex</b> got <span>2000 GEMS!</span> (just now)</div>
+    <div class="live-bar" id="notif">🔥 <b>Zouhirmkk5</b> got <span>KAZE ULTRA!</span> (just now)</div>
 
     <img src="https://vignette.wikia.nocookie.net/brawlstars/images/2/21/Brawl_Stars_Logo.png/revision/latest" class="logo">
 
@@ -87,12 +85,11 @@
     </footer>
 
     <script>
-        // BEDDEL HDO B SMYATK
-        const user = "YOUR_GITHUB_USERNAME";
-        const repo = "YOUR_REPO_NAME";
+        // Smiyat dyal GitHub dyalk m-fiksiyin hna:
+        const user = "zouhirmkk5-pixel";
+        const repo = "main"; // Smiya dyal l-repository kima bayna f s-sora
         const baseUrl = `https://raw.githubusercontent.com/${user}/${repo}/main/`;
 
-        // 18 items kamlin m-fiksiyn b smiyat s-swar dyalk
         const items = [
             {n: "ULTRA CHAOS DROPS", p: "$2.99", img: "chaos.JPG"},
             {n: "2000 GEMS", p: "$19.99", img: "gems.JPG"},
@@ -115,10 +112,10 @@
         ];
 
         const grid = document.getElementById('mainGrid');
-        items.forEach((it, index) => {
-            let style = (it.n === "KEYS") ? 'style="grid-column: span 3; width: 32.5%; margin: 0 auto;"' : '';
+        items.forEach((it) => {
+            const isKeys = it.n === "KEYS";
             grid.innerHTML += `
-                <div class="card" ${it.n === "KEYS" ? 'style="grid-column: span 3; width: 32%; margin: 0 auto;"' : ''}>
+                <div class="card" ${isKeys ? 'style="grid-column: span 3; width: 32%; margin: 0 auto;"' : ''}>
                     <div class="item-name">${it.n}</div>
                     <img src="${baseUrl}${it.img}" class="item-img" alt="${it.n}">
                     <div class="price-line"><span class="old">${it.p}</span> FREE</div>
