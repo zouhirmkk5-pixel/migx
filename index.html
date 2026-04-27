@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brawler Rewards - Colors Fixed</title>
+    <title>Brawler Rewards - Transparent Pro</title>
     <style>
         :root {
             --bs-blue: #2b5ce6;
@@ -33,24 +33,27 @@
 
         .card {
             background: #4e21cc;
-            background-image: linear-gradient(135deg, #5e2de3 0%, #4a1fbc 100%);
+            background-image: radial-gradient(circle at top, #6a36ff 0%, #4a1fbc 100%);
             border: 2px solid #7a46ff; border-radius: 18px;
             padding: 10px 5px; position: relative;
             box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            overflow: hidden;
         }
 
         .item-name { font-size: 9px; font-weight: 900; height: 25px; line-height: 1.1; margin-bottom: 5px; }
 
         .img-box {
             height: 90px; display: flex; align-items: center; justify-content: center;
-            margin-bottom: 8px; border-radius: 10px; overflow: hidden;
-            background: rgba(255,255,255,0.05); /* Khalfya khafifa bach t-byen s-sora */
+            margin-bottom: 8px; position: relative;
         }
-        
+
+        /* HADI HIA L-FAZA DYAL CHROMA KEY */
         .item-img { 
             width: 100%; max-height: 100%; object-fit: contain;
-            /* 7iyedna multiply bach l-alwan i-rj3o l-aslhom */
-            filter: drop-shadow(0 5px 5px rgba(0,0,0,0.3));
+            /* Kat-khalli s-sora transparent f l-alwan l-ghameqa */
+            mask-image: radial-gradient(circle, black 60%, transparent 100%);
+            -webkit-mask-image: radial-gradient(circle, black 60%, transparent 100%);
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)) brightness(1.1);
         }
 
         .price-tag { color: var(--accent-green); font-size: 10px; font-weight: 900; margin-bottom: 8px; }
@@ -76,6 +79,7 @@
     </div>
 
     <script>
+        // Smiyat m-faksiyn 3la 7sab s-sora dyal GitHub lli sifti
         const items = [
             {n: "ULTRA CHAOS DROPS", p: "$2.99", q: "X6", img: "chaos.JPG"},
             {n: "2000 GEMS", p: "$19.99", q: "X24", img: "gems.JPG"},
@@ -89,7 +93,7 @@
             {n: "NAJIA BOX", p: "$2.99", q: "X10", img: "najia_box.jpg"},
             {n: "NAJIA BRAWLER", p: "$8.99", q: "X1", img: "najia_skin.JPG"},
             {n: "SIRIUS BOX", p: "$2.99", q: "X6", img: "sirius_box.jpg"},
-            {n: "KAZE", p: "$8.99", q: "X1", img: "kaze.png.JPG"},
+            {n: "KAZE", p: "$8.99", q: "X1", img: "kaze.JPG"},
             {n: "BRAWL PASS", p: "$8.99", q: "X1", img: "pass.jpg"},
             {n: "SIRIUS BRAWLER", p: "$4.99", q: "X1", img: "sirius.JPG"}
         ];
