@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brawler Rewards - Final Fix</title>
+    <title>Brawler Rewards - Final Professional Fix</title>
     <style>
         :root {
             --bs-blue: #2b5ce6;
@@ -65,7 +65,7 @@
 </head>
 <body>
 
-    <div class="live-bar">🔥 <b>Zouhirmkk5</b> just claimed <span>Kaze Ultra Legendary!</span></div>
+    <div class="live-bar">🔥 <b>KazeULTRA</b> just claimed <span>Kaze Ultra Legendary!</span></div>
 
     <img src="https://vignette.wikia.nocookie.net/brawlstars/images/2/21/Brawl_Stars_Logo.png/revision/latest" class="logo">
 
@@ -85,7 +85,7 @@
     </footer>
 
     <script>
-        // L-Link l-m-faksi 100% 3la hsab l-folder dyalk f GitHub
+        // L-Link l-i-khedem darori: User/Repo/Branch/File
         const baseUrl = "https://raw.githubusercontent.com/zouhirmkk5-pixel/zouhirmkk5-pixel/main/";
 
         const items = [
@@ -93,7 +93,7 @@
             {n: "2000 GEMS", p: "$19.99", q: "X24", img: "gems.JPG"},
             {n: "STARR NOVA BOX", p: "$24.99", q: "X100", img: "nova_box.jpg"},
             {n: "STARR NOVA SKIN", p: "$14.99", q: "X1", img: "nova_skin.jpg"},
-            {n: "NOVA DROP", p: "$1.99", q: "X10", img: "nova_box.jpg"}, // M-sta3ml l-box k-placeholder
+            {n: "NOVA DROP", p: "$1.99", q: "X10", img: "nova_box.jpg"},
             {n: "DAMIAN BOX", p: "$9.99", q: "X1", img: "damian_box.jpg"},
             {n: "DAMIAN SKIN", p: "$4.99", q: "X1", img: "damian_skin.JPG"},
             {n: "BOLT SKIN", p: "$4.99", q: "X1", img: "bolt_skin.JPG"},
@@ -116,7 +116,7 @@
             grid.innerHTML += `
                 <div class="card" ${isKeys ? 'style="grid-column: span 3; width: 32%; margin: 0 auto;"' : ''}>
                     <div class="item-name">${it.n}</div>
-                    <img src="${baseUrl}${it.img}" class="item-img" onerror="this.src='https://via.placeholder.com/150?text=Error'">
+                    <img src="${baseUrl}${it.img}" class="item-img" alt="${it.n}">
                     <div class="price-line"><span class="old">${it.p}</span> ${it.q} FREE</div>
                     <button class="btn-claim">CLAIM</button>
                 </div>
