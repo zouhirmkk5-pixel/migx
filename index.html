@@ -3,145 +3,118 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brawl Stars Rewards - Fixed Design</title>
+    <title>Brawler Rewards - Full High-Tier</title>
     <style>
         :root {
             --bs-blue: #2b5ce6;
             --card-purple: #4a1fbc;
-            --glow-light: #8e66ff;
             --accent-green: #afff00;
         }
 
-        /* 1. Fix l-Background l-asli dyal l-page */
         body {
             background-color: var(--bs-blue);
-            /* Background m-decori b les icones dyal Brawl Stars */
-            background-image: url('https://www.transparentpng.com/download/brawl-stars/stars-pattern-background-5.png');
-            background-size: 300px;
+            /* Background pattern m-fiksi */
+            background-image: radial-gradient(rgba(255,255,255,0.1) 2px, transparent 2px);
+            background-size: 30px 30px;
             font-family: 'Arial Black', sans-serif;
             margin: 0; color: white; text-align: center;
         }
 
-        .live-bar {
-            background: rgba(0,0,0,0.6); padding: 10px 0; font-size: 11px;
-            border-bottom: 2px solid rgba(255,255,255,0.1);
-        }
-        .live-bar span { color: #ff66cc; font-weight: bold; }
+        .live-bar { background: rgba(0,0,0,0.5); padding: 8px 0; font-size: 10px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .live-bar span { color: #ff66cc; }
 
-        .logo { width: 150px; margin: 25px 0; filter: drop-shadow(0 5px 15px rgba(0,0,0,0.5)); }
+        .logo { width: 140px; margin: 20px 0; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); }
 
-        /* Stats fixed style */
         .stats-panel {
             background: rgba(0,0,0,0.3); border: 2px solid rgba(255,255,255,0.2);
-            border-radius: 20px; display: inline-flex; gap: 30px; padding: 15px 35px; margin-bottom: 25px;
+            border-radius: 20px; display: inline-flex; gap: 30px; padding: 12px 30px; margin-bottom: 20px;
         }
-        .stat-val { display: block; font-size: 20px; font-weight: 900; color: #fff; }
+        .stat-val { display: block; font-size: 18px; font-weight: 900; }
 
         .container {
-            width: 94%; max-width: 500px; margin: 0 auto 40px auto;
-            background: rgba(255, 255, 255, 0.1); border: 3px solid rgba(255, 255, 255, 0.15);
-            border-radius: 35px; padding: 20px; backdrop-filter: blur(5px);
+            width: 95%; max-width: 480px; margin: 0 auto;
+            background: rgba(255, 255, 255, 0.08); border: 2px solid rgba(255, 255, 255, 0.15);
+            border-radius: 30px; padding: 15px; box-sizing: border-box;
         }
 
-        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+        .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
 
-        /* 2. Fix l-Background dyal l-card (Sunburst effect) */
+        /* Card dyal l-effet che3cha3a (Sunburst) */
         .card {
             background: var(--card-purple);
-            /* Effet che3cha3a f-west l-card */
-            background-image: radial-gradient(circle, rgba(142, 102, 255, 0.8) 0%, transparent 70%), 
-                              repeating-conic-gradient(from 0deg, rgba(255,255,255,0.05) 0deg 15deg, transparent 15deg 30deg);
-            border: 2px solid #a385ff; border-radius: 18px;
-            padding: 15px 5px; position: relative; overflow: hidden;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.4);
+            background-image: radial-gradient(circle, rgba(142, 102, 255, 0.9) 0%, transparent 75%), 
+                              repeating-conic-gradient(from 0deg, rgba(255,255,255,0.08) 0deg 15deg, transparent 15deg 30deg);
+            border: 2px solid #a385ff; border-radius: 15px;
+            padding: 12px 5px; position: relative; overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.4);
         }
 
-        .item-name { font-size: 9px; font-weight: 900; height: 25px; text-transform: uppercase; line-height: 1.1; margin-bottom: 8px; }
+        .item-name { font-size: 8px; font-weight: 900; height: 22px; text-transform: uppercase; line-height: 1.1; margin-bottom: 5px; }
         
-        /* Fix s-swar bach may-bqach y-ban l-khra */
+        /* Swar fix 100% */
         .item-img { 
-            width: 85%; height: 75px; object-fit: contain; 
-            margin: 5px auto; display: block;
-            filter: drop-shadow(0 8px 12px rgba(0,0,0,0.6)); 
+            width: 90%; height: 70px; object-fit: contain; 
+            filter: drop-shadow(0 8px 10px rgba(0,0,0,0.6));
+            margin: 5px 0;
         }
         
-        .price-tag { color: var(--accent-green); font-size: 9px; font-weight: 900; margin: 10px 0; }
-        .old-p { text-decoration: line-through; opacity: 0.6; margin-right: 3px; }
+        .price-line { color: var(--accent-green); font-size: 8.5px; font-weight: 900; margin-bottom: 8px; }
+        .old { text-decoration: line-through; opacity: 0.6; margin-right: 2px; }
 
         .btn-claim {
             background: linear-gradient(180deg, #00a2ff 0%, #005fcc 100%);
-            border: 1px solid #00d9ff; border-radius: 8px; color: white;
-            font-size: 12px; font-weight: 900; padding: 10px 0; width: 90%;
-            box-shadow: 0 4px 0 #003a80; cursor: pointer; text-transform: uppercase;
+            border: 1px solid #00d9ff; border-radius: 6px; color: white;
+            font-size: 11px; font-weight: 900; padding: 8px 0; width: 100%;
+            box-shadow: 0 3px 0 #003a80; cursor: pointer;
         }
 
-        footer { background: #000; padding: 50px 25px; margin-top: 60px; text-align: left; font-size: 11px; color: #999; }
-        .sc-logo { width: 100px; filter: grayscale(1); float: right; opacity: 0.7; }
+        footer { background: #000; padding: 40px 20px; margin-top: 50px; text-align: left; font-size: 10px; color: #888; }
+        .sc-logo { width: 95px; float: right; filter: grayscale(1); opacity: 0.8; }
     </style>
 </head>
 <body>
 
-    <div class="live-bar" id="notif">🔥 <b>BR4WL_K1NG</b> got <span>Chaos Drops!</span> (just now)</div>
+    <div class="live-bar" id="notif">🔥 <b>KazeULTRA</b> got <span>Kaze Ultra Legendary!</span> (1m ago)</div>
 
-    <img src="https://vignette.wikia.nocookie.net/brawlstars/images/2/21/Brawl_Stars_Logo.png/revision/latest?cb=20170616133341" class="logo">
+    <img src="https://vignette.wikia.nocookie.net/brawlstars/images/2/21/Brawl_Stars_Logo.png/revision/latest" class="logo">
 
     <div class="stats-panel">
         <div>CLAIMS TODAY<span class="stat-val">3,122</span></div>
-        <div>ONLINE<span class="stat-val">1,095</span></div>
+        <div>ONLINE<span class="stat-val">1,088</span></div>
     </div>
 
     <div class="container">
-        <div style="font-size: 16px; font-weight:900; margin-bottom:20px; text-transform: uppercase;">CHOOSE YOUR REWARD</div>
+        <div style="font-size:15px; font-weight:900; margin-bottom:15px;">SELECT YOUR REWARD</div>
         <div class="grid">
-            <div class="card">
-                <div class="item-name">ULTRA CHAOS DROPS</div>
-                <img src="https://static.wikia.nocookie.net/brawlstars/images/0/03/Starr_Drop_Legendary.png" class="item-img">
-                <div class="price-tag"><span class="old-p">$2.99</span> X6 FREE</div>
-                <button class="btn-claim">CLAIM</button>
-            </div>
-
-            <div class="card">
-                <div class="item-name">2000 GEMS</div>
-                <img src="https://static.wikia.nocookie.net/brawlstars/images/b/b3/Gem.png" class="item-img">
-                <div class="price-tag"><span class="old-p">$19.99</span> X24 FREE</div>
-                <button class="btn-claim">CLAIM</button>
-            </div>
-
-            <div class="card">
-                <div class="item-name">MEGA BOX</div>
-                <img src="https://static.wikia.nocookie.net/brawlstars/images/4/4c/Mega_Box.png" class="item-img">
-                <div class="price-tag"><span class="old-p">$9.99</span> X10 FREE</div>
-                <button class="btn-claim">CLAIM</button>
-            </div>
-
-            <div class="card">
-                <div class="item-name">BRAWL PASS PLUS</div>
-                <img src="https://static.wikia.nocookie.net/brawlstars/images/a/a2/Brawl_Pass_Logo.png" class="item-img">
-                <div class="price-tag"><span class="old-p">$8.99</span> X1 FREE</div>
-                <button class="btn-claim">CLAIM</button>
-            </div>
-            
-            <div class="card">
-                <div class="item-name">SIRIUS BRAWLER</div>
-                <img src="https://static.wikia.nocookie.net/brawlstars/images/a/a9/Melodie_Skin-Sif.png" class="item-img">
-                <div class="price-tag"><span class="old-p">$4.99</span> X1 FREE</div>
-                <button class="btn-claim">CLAIM</button>
-            </div>
-
-            <div class="card">
-                <div class="item-name">BUFFIES</div>
-                <img src="https://static.wikia.nocookie.net/brawlstars/images/6/6e/Pin_Happy.png" class="item-img">
-                <div class="price-tag"><span class="old-p">$2.99</span> X6 FREE</div>
-                <button class="btn-claim">CLAIM</button>
+            <div class="card"><div class="item-name">ULTRA CHAOS DROPS</div><img src="https://files.catbox.moe/s92o8o.png" class="item-img"><div class="price-line"><span class="old">$2.99</span> X6 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div class="card"><div class="item-name">2000 GEMS</div><img src="https://files.catbox.moe/8z19k4.png" class="item-img"><div class="price-line"><span class="old">$19.99</span> X24 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div class="card"><div class="item-name">STARR NOVA BOX</div><img src="https://files.catbox.moe/k3b0n6.png" class="item-img"><div class="price-line"><span class="old">$24.99</span> X100 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div class="card"><div class="item-name">STARR NOVA SKIN</div><img src="https://files.catbox.moe/vsh03p.png" class="item-img"><div class="price-line"><span class="old">$14.99</span> X1 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div class="card"><div class="item-name">NOVA DROP</div><img src="https://files.catbox.moe/w8x22t.png" class="item-img"><div class="price-line"><span class="old">$1.99</span> X10 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div class="card"><div class="item-name">DAMIAN BOX</div><img src="https://files.catbox.moe/v087j1.png" class="item-img"><div class="price-line"><span class="old">$9.99</span> X1 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div class="card"><div class="item-name">DAMIAN SKIN</div><img src="https://files.catbox.moe/5r3g2p.png" class="item-img"><div class="price-line"><span class="old">$4.99</span> X1 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div class="card"><div class="item-name">BOLT SKIN</div><img src="https://files.catbox.moe/97213o.png" class="item-img"><div class="price-line"><span class="old">$4.99</span> X1 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div class="card"><div class="item-name">BOLT BOX</div><img src="https://files.catbox.moe/v087j1.png" class="item-img"><div class="price-line"><span class="old">$9.99</span> X50 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div class="card"><div class="item-name">MEGA BOX</div><img src="https://files.catbox.moe/8hpswz.png" class="item-img"><div class="price-line"><span class="old">$4.99</span> X10 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div class="card"><div class="item-name">NAJIA BOX</div><img src="https://files.catbox.moe/k3b0n6.png" class="item-img"><div class="price-line"><span class="old">$2.99</span> X10 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div class="card"><div class="item-name">NAJIA BRAWLER SKIN</div><img src="https://files.catbox.moe/d8n9h1.png" class="item-img"><div class="price-line"><span class="old">$8.99</span> X1 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div class="card"><div class="item-name">SIRIUS BOX</div><img src="https://files.catbox.moe/v087j1.png" class="item-img"><div class="price-line"><span class="old">$2.99</span> X6 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div class="card"><div class="item-name">KAZE ULTRA LEGENDARY</div><img src="https://files.catbox.moe/k3b0n6.png" class="item-img"><div class="price-line"><span class="old">$8.99</span> X1 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div class="card"><div class="item-name">BRAWL PASS PLUS</div><img src="https://static.wikia.nocookie.net/brawlstars/images/a/a2/Brawl_Pass_Logo.png" class="item-img"><div class="price-line"><span class="old">$8.99</span> X1 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div class="card"><div class="item-name">SIRIUS BRAWLER</div><img src="https://files.catbox.moe/vsh03p.png" class="item-img"><div class="price-line"><span class="old">$4.99</span> X1 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div class="card"><div class="item-name">ULTRA BOX</div><img src="https://files.catbox.moe/8hpswz.png" class="item-img"><div class="price-line"><span class="old">$9.99</span> X6 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div class="card"><div class="item-name">BUFFIES</div><img src="https://files.catbox.moe/s92o8o.png" class="item-img"><div class="price-line"><span class="old">$2.99</span> X6 FREE</div><button class="btn-claim">CLAIM</button></div>
+            <div style="grid-column: span 3; display: flex; justify-content: center;">
+                <div class="card" style="width: 32%;"><div class="item-name">KEYS</div><img src="https://static.wikia.nocookie.net/brawlstars/images/e/e3/Token_Doubler.png" class="item-img"><div class="price-line"><span class="old">$2.99</span> X6 FREE</div><button class="btn-claim">CLAIM</button></div>
             </div>
         </div>
     </div>
 
     <footer>
         <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2b/Supercell_logo.svg/1200px-Supercell_logo.svg.png" class="sc-logo">
-        <p>Terms of Service | Privacy Policy | Parent's Guide</p>
-        <p>© 2026 Supercell Oy. All rights reserved.</p>
+        <p>Terms of Service | Privacy Policy | Parent's Guide<br>Safe and Fair Play | Supercell Oy</p>
     </footer>
 
 </body>
 </html>
+
