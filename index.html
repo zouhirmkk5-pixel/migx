@@ -14,6 +14,7 @@
             --footer-bg: #000000;
             --modal-green: #52a51d;
             --modal-border: #2d5a11;
+            --bs-yellow: #ffcc00;
         }
 
         body {
@@ -22,45 +23,32 @@
             font-family: 'Lilita One', cursive;
             color: white; text-align: center;
             overflow-x: hidden;
-            background-image: 
-                radial-gradient(rgba(255,255,255,0.15) 15%, transparent 15%),
-                radial-gradient(rgba(255,255,255,0.15) 15%, transparent 15%);
+            background-image: radial-gradient(rgba(255,255,255,0.15) 15%, transparent 15%), radial-gradient(rgba(255,255,255,0.15) 15%, transparent 15%);
             background-position: 0 0, 25px 25px;
             background-size: 50px 50px;
             animation: moveBackground 4s linear infinite;
         }
 
-        @keyframes moveBackground {
-            from { background-position: 0 0, 25px 25px; }
-            to { background-position: 50px 50px, 75px 75px; }
-        }
+        @keyframes moveBackground { from { background-position: 0 0, 25px 25px; } to { background-position: 50px 50px, 75px 75px; } }
 
-        .live-bar { background: rgba(0,0,0,0.5); padding: 8px 0; font-size: 11px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        /* Live Bar Dynamique */
+        .live-bar { background: rgba(0,0,0,0.6); padding: 8px 0; font-size: 12px; border-bottom: 2px solid rgba(255,255,255,0.1); overflow: hidden; height: 20px; }
+        #liveText { transition: all 0.5s ease-in-out; display: inline-block; }
 
         .logo-container { margin: 20px 0; }
-        .logo { 
-            width: 170px; 
-            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6));
-            animation: floatLogo 3s ease-in-out infinite;
-        }
-        @keyframes floatLogo {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-15px); }
-        }
+        .logo { width: 170px; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.6)); animation: floatLogo 3s ease-in-out infinite; }
+        @keyframes floatLogo { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
         .stats-panel {
-            background: rgba(22, 33, 85, 0.85);
-            border: 2px solid rgba(255,255,255,0.2);
+            background: rgba(22, 33, 85, 0.85); border: 2px solid rgba(255,255,255,0.2);
             border-radius: 20px; display: inline-flex; gap: 30px; padding: 15px 35px; margin-bottom: 25px;
             box-shadow: inset 0 0 15px rgba(0,0,0,0.6); align-items: center;
         }
         .stat-box { display: flex; flex-direction: column; align-items: center; min-width: 100px; position: relative; }
-        .stat-box:first-child::after { content: ""; position: absolute; right: -15px; top: 20%; height: 60%; width: 2px; background: rgba(255,255,255,0.1); }
         .dot { width: 7px; height: 7px; border-radius: 50%; background: #ff4444; display: inline-block; margin-right: 5px; box-shadow: 0 0 8px #ff4444; }
         .dot.blue { background: #00ccff; box-shadow: 0 0 8px #00ccff; }
-        .stat-icon { width: 45px; height: 45px; margin-bottom: 8px; transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .stat-icon { width: 45px; height: 45px; margin-bottom: 8px; transition: transform 0.3s; }
         .stat-val { font-size: 24px; text-shadow: 2px 2px #000; letter-spacing: 1px; }
-        .stat-label { font-size: 10px; text-transform: uppercase; opacity: 0.8; margin-top: 2px; }
 
         .container {
             width: 95%; max-width: 480px; margin: 0 auto;
@@ -89,42 +77,44 @@
             color: white; font-size: 14px; padding: 7px 0; width: 90%; cursor: pointer; z-index: 2; font-family: 'Lilita One', cursive;
         }
 
-        /* --- MODALS --- */
+        /* Modals */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 1000;
             backdrop-filter: blur(8px);
         }
         .modal-box {
-            background: var(--modal-green); width: 85%; max-width: 380px;
+            background: var(--modal-green); width: 90%; max-width: 400px;
             border: 5px solid var(--modal-border); border-radius: 30px;
-            padding: 35px 20px; position: relative; box-shadow: 0 12px 0 var(--modal-border);
+            padding: 30px 15px; position: relative; box-shadow: 0 12px 0 var(--modal-border);
         }
         .btn-back { position: absolute; top: 15px; left: 15px; background: #333; border-radius: 8px; width: 35px; height: 35px; border: none; cursor: pointer; box-shadow: 0 3px 0 #000; }
         
         .input-wrapper {
             background: rgba(0,0,0,0.4); border: 3px solid rgba(255,255,255,0.2);
-            border-radius: 18px; padding: 15px; margin: 20px 0; display: flex; align-items: center;
+            border-radius: 18px; padding: 18px; margin: 20px 0; display: flex; align-items: center;
         }
         .modal-input { background: transparent; border: none; color: white; width: 100%; font-family: 'Lilita One', cursive; font-size: 22px; outline: none; }
-        
         .btn-letsgo {
             background: linear-gradient(180deg, #ffcc00 0%, #ff9900 100%);
             border: none; border-bottom: 8px solid #b36b00; border-radius: 15px;
-            color: white; font-size: 28px; padding: 10px 0; width: 100%; cursor: pointer; text-shadow: 2px 2px 0 #b36b00;
+            color: white; font-size: 32px; padding: 12px 0; width: 100%; cursor: pointer; text-shadow: 3px 3px 0 #b36b00;
         }
 
-        .locker-container { background: #1a1a1a; border: 4px solid #000; border-radius: 15px; height: 400px; width: 100%; margin-top: 10px; overflow: hidden; }
+        .locker-header { margin-bottom: 15px; }
+        .locker-logo { width: 120px; margin-bottom: 5px; }
+        .locker-title { font-size: 18px; color: var(--bs-yellow); text-shadow: 2px 2px #000; margin-bottom: 5px; }
+        .locker-sub { font-size: 10px; opacity: 0.9; text-transform: uppercase; line-height: 1.3; }
+        .locker-frame {
+            background: #1a1a1a; border: 4px solid #000; border-radius: 20px;
+            width: 100%; height: 420px; margin-top: 10px; overflow: hidden;
+            box-shadow: inset 0 0 15px #000;
+        }
         iframe { width: 100%; height: 100%; border: none; }
 
-        /* FOOTER ORIGINAL */
         footer { margin-top: 60px; background: var(--footer-bg); padding: 50px 20px; text-align: left; color: #ffffff; font-family: sans-serif; }
-        .footer-top { display: flex; justify-content: space-between; align-items: flex-start; max-width: 500px; margin: 0 auto 30px auto; flex-wrap: wrap; gap: 20px; }
-        .footer-section h4 { font-size: 16px; margin-bottom: 15px; font-weight: bold; }
-        .store-btns { display: flex; gap: 10px; }
+        .footer-top { display: flex; justify-content: space-between; max-width: 500px; margin: 0 auto 30px auto; flex-wrap: wrap; gap: 20px; }
         .store-btns img { height: 40px; border-radius: 5px; border: 1px solid #333; }
-        .social-links { display: flex; gap: 15px; font-size: 22px; margin-top: 10px; }
-        .social-links a { color: white; text-decoration: none; }
         .footer-bottom { max-width: 500px; margin: 0 auto; display: flex; justify-content: space-between; border-top: 1px solid #333; padding-top: 30px; }
         .legal-links { display: flex; flex-direction: column; gap: 12px; }
         .legal-links a { color: white; text-decoration: none; font-size: 14px; font-weight: bold; opacity: 0.8; }
@@ -133,7 +123,9 @@
 </head>
 <body>
 
-    <div class="live-bar">🔥 <b>BR4WL_K1NG</b> claimed <span>Chaos Drops!</span></div>
+    <div class="live-bar">
+        <span id="liveText">🔥 <b>Jaxson_BS</b> claimed <span>2000 GEMS!</span></span>
+    </div>
 
     <div class="logo-container">
         <img src="./logo.PNG" class="logo">
@@ -144,13 +136,11 @@
             <div style="font-size: 9px;"><span class="dot"></span> LIVE</div>
             <img src="./chaous.PNG" id="liveIcon" class="stat-icon">
             <span class="stat-val" id="claimed">3,122</span>
-            <span class="stat-label">Claimed</span>
         </div>
         <div class="stat-box">
             <div style="font-size: 9px;"><span class="dot blue"></span> ONLINE</div>
             <img src="./boltbox.PNG" id="onlineIcon" class="stat-icon">
             <span class="stat-val" id="online">1,088</span>
-            <span class="stat-label">Online</span>
         </div>
     </div>
 
@@ -162,41 +152,44 @@
     <div class="modal-overlay" id="modalTag">
         <div class="modal-box">
             <button class="btn-back" onclick="closeModals()"><i class="fas fa-chevron-left" style="color: white;"></i></button>
-            <h2 style="text-shadow: 3px 3px 0 #000;">PLAYER TAG</h2>
+            <h2 style="text-shadow: 3px 3px 0 #000;">ENTER PLAYER TAG</h2>
             <div class="input-wrapper">
                 <span style="font-size:24px; margin-right:10px; color:#777;">#</span>
-                <input type="text" class="modal-input" id="playerTag" placeholder="ENTER NAME" maxlength="12">
+                <input type="text" class="modal-input" id="playerTag" placeholder="PLAYER TAG" maxlength="12">
             </div>
-            <button class="btn-letsgo" onclick="showLocker()">LET'S GO!</button>
+            <button class="btn-letsgo" onclick="goToLocker()">LET'S GO!</button>
+            <p style="font-size: 10px; margin-top: 20px; text-transform: uppercase; line-height: 1.4;">We use a real system to find your account. Make sure you see your real username next!</p>
         </div>
     </div>
 
     <div class="modal-overlay" id="modalLocker">
         <div class="modal-box">
             <button class="btn-back" onclick="backToTag()"><i class="fas fa-chevron-left" style="color: white;"></i></button>
-            <h2 style="text-shadow: 3px 3px 0 #000;">FINAL STEP</h2>
-            <div class="locker-container">
+            <div class="locker-header">
+                <img src="./logo.PNG" class="locker-logo">
+                <div class="locker-title">MANUAL VERIFICATION</div>
+                <div class="locker-sub">To prevent bot abuse and ensure your rewards are delivered, please complete one quick offer below.</div>
+            </div>
+            <div class="locker-frame">
                 <iframe src="https://checkmyapp.space/cl/i/822w96"></iframe>
             </div>
-            <p style="font-size: 9px; margin-top: 15px; opacity: 0.8;">CLAIM YOUR REWARD AFTER COMPLETING THE VERIFICATION</p>
+            <p style="font-size: 9px; margin-top: 15px; opacity: 0.8; letter-spacing: 1px;">VERIFIED BY SUPERCELL™ REWARDS SYSTEM</p>
         </div>
     </div>
 
     <footer>
         <div class="footer-top">
-            <div class="footer-section">
+            <div>
                 <h4>Download our games</h4>
                 <div class="store-btns">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg">
                 </div>
             </div>
-            <div class="footer-section">
+            <div>
                 <h4>Follow us</h4>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-discord"></i></a>
+                <div class="social-links" style="font-size: 22px; display: flex; gap: 15px;">
+                    <i class="fab fa-youtube"></i> <i class="fab fa-facebook-f"></i> <i class="fab fa-discord"></i>
                 </div>
             </div>
         </div>
@@ -216,7 +209,7 @@
     </footer>
 
     <script>
-        const rewards = [
+        const rewardsData = [
             {n: "ULTRA CHAOS DROPS", q: "X6", img: "chaous.PNG"},
             {n: "2000 GEMS", q: "X24", img: "gems.PNG"},
             {n: "STARR NOVA BOX", q: "X100", img: "novabox.PNG"},
@@ -237,20 +230,35 @@
             {n: "KEYS", q: "X6", img: "Keys.PNG"}
         ];
 
+        // 40 USA NAMES
+        const names = ["Jaxson_BS", "Logan_Pro", "Skyler_99", "Mason_King", "Ethan_Brawl", "Ava_Star", "Noah_GG", "Liam_X", "Olivia_Pro", "Sophia_BS", "Lucas_Warrior", "Jackson_Win", "Aiden_Fast", "Caden_Hero", "Grayson_Elite", "Riley_Gamer", "Parker_Brawl", "Carter_Rewards", "Lincoln_X", "Hudson_BS", "Zoe_Queen", "Mila_Star", "Luna_Pro", "Aria_Gems", "Scarlett_Win", "Violet_GG", "Hazel_Elite", "Aurora_Brawl", "Nova_Hero", "Piper_Warrior", "Everly_Pro", "Bella_King", "Maya_GG", "Sadie_Star", "Ruby_Rewards", "Eliana_Elite", "Alice_Win", "Madelyn_BS", "Gianna_Hero", "Willow_Gamer"];
+        const prizeTypes = ["Chaos Drops", "2000 GEMS", "Starr Nova Box", "Mega Box", "Brawl Pass Plus", "Ultra Box"];
+
         const grid = document.getElementById('mainGrid');
-        rewards.forEach(r => {
-            grid.innerHTML += `
-                <div class="card">
-                    <div class="item-name">${r.n}</div>
-                    <div class="img-box"><img src="./${r.img}" class="item-img"></div>
-                    <div class="price-line">${r.q} FREE</div>
-                    <button class="btn-claim" onclick="openTagModal()">CLAIM</button>
-                </div>`;
+        rewardsData.forEach(r => {
+            grid.innerHTML += `<div class="card">
+                <div class="item-name">${r.n}</div>
+                <div class="img-box"><img src="./${r.img}" class="item-img"></div>
+                <div class="price-line">${r.q} FREE</div>
+                <button class="btn-claim" onclick="openTagModal()">CLAIM</button>
+            </div>`;
         });
+
+        // Live Bar Logic
+        setInterval(() => {
+            const liveText = document.getElementById('liveText');
+            liveText.style.opacity = '0';
+            setTimeout(() => {
+                const randomName = names[Math.floor(Math.random() * names.length)];
+                const randomPrize = prizeTypes[Math.floor(Math.random() * prizeTypes.length)];
+                liveText.innerHTML = `🔥 <b>${randomName}</b> claimed <span>${randomPrize}!</span>`;
+                liveText.style.opacity = '1';
+            }, 500);
+        }, 4000);
 
         function openTagModal() { document.getElementById('modalTag').style.display = 'flex'; }
         function closeModals() { document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = 'none'); }
-        function showLocker() { 
+        function goToLocker() {
             if(document.getElementById('playerTag').value.length > 2) {
                 document.getElementById('modalTag').style.display = 'none';
                 document.getElementById('modalLocker').style.display = 'flex';
