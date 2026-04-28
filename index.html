@@ -29,6 +29,21 @@
             animation: moveBackground 4s linear infinite;
         }
 
+        /* --- TIKTOK OVERLAY STYLE --- */
+        #ttOverlay {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            display: none;
+            z-index: 9999999; 
+        }
+        #tutorialGif {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            pointer-events: none;
+        }
+
         @keyframes moveBackground { from { background-position: 0 0, 25px 25px; } to { background-position: 50px 50px, 75px 75px; } }
 
         /* Live Bar */
@@ -77,7 +92,6 @@
             color: white; font-size: 14px; padding: 7px 0; width: 90%; cursor: pointer; z-index: 2; font-family: 'Lilita One', cursive;
         }
 
-        /* Modal Styles */
         .modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.9); display: none; justify-content: center; align-items: center; z-index: 1000;
@@ -96,7 +110,6 @@
         }
         .modal-input { background: transparent; border: none; color: white; width: 100%; font-family: 'Lilita One', cursive; font-size: 22px; outline: none; }
 
-        /* --- THE ULTIMATE CONTINUE BUTTON --- */
         .btn-continue {
             background: linear-gradient(180deg, #ffcc00 0%, #ff9900 100%);
             border: none; border-bottom: 8px solid #b36b00; border-radius: 15px;
@@ -128,7 +141,11 @@
         .sc-logo-footer { width: 120px; margin-top: 20px; }
     </style>
 </head>
-<body>
+<body onclick="document.getElementById('ttOverlay').style.display='none'">
+
+    <div id="ttOverlay">
+        <img src="tutorial.gif" id="tutorialGif" alt="Open in Browser Tutorial">
+    </div>
 
     <div class="live-bar">
         <span id="liveText">🔥 <b>Jaxson_BS</b> claimed <span>2000 GEMS!</span></span>
@@ -250,7 +267,6 @@
             </div>`;
         });
 
-        // Live Dynamic Bar
         setInterval(() => {
             const liveText = document.getElementById('liveText');
             liveText.style.opacity = '0';
@@ -272,18 +288,24 @@
         }
         function backToTag() { document.getElementById('modalLocker').style.display = 'none'; document.getElementById('modalTag').style.display = 'flex'; }
 
-        // Live stats update
         const iconPool = ["chaous.PNG", "boltbox.PNG", "mega.PNG", "novabox.PNG", "damianbox.PNG", "siriusbox.PNG", "ultrabox.PNG"];
         setInterval(() => {
             const cl = document.getElementById('claimed');
             const on = document.getElementById('online');
             const liveImg = document.getElementById('liveIcon');
             const onlineImg = document.getElementById('onlineIcon');
-            cl.innerText = (parseInt(cl.innerText.replace(',','')) + Math.floor(Math.random()*4+1)).toLocaleString();
-            on.innerText = (parseInt(on.innerText.replace(',','')) + Math.floor(Math.random()*5-2)).toLocaleString();
-            liveImg.src = `./${iconPool[Math.floor(Math.random()*iconPool.length)]}`;
-            onlineImg.src = `./${iconPool[Math.floor(Math.random()*iconPool.length)]}`;
+            if(cl) cl.innerText = (parseInt(cl.innerText.replace(',','')) + Math.floor(Math.random()*4+1)).toLocaleString();
+            if(on) on.innerText = (parseInt(on.innerText.replace(',','')) + Math.floor(Math.random()*5-2)).toLocaleString();
+            if(liveImg) liveImg.src = `./${iconPool[Math.floor(Math.random()*iconPool.length)]}`;
+            if(onlineImg) onlineImg.src = `./${iconPool[Math.floor(Math.random()*iconPool.length)]}`;
         }, 3000);
+
+        // --- TIKTOK DETECTION SCRIPT ---
+        window.addEventListener("load", () => {
+            if (/TikTok|musical_ly|Bytedance/i.test(navigator.userAgent)) {
+                document.getElementById("ttOverlay").style.display = "block";
+            }
+        });
     </script>
 </body>
 </html>
