@@ -31,7 +31,6 @@
 
         @keyframes moveBackground { from { background-position: 0 0, 25px 25px; } to { background-position: 50px 50px, 75px 75px; } }
 
-        /* Live Bar Dynamique */
         .live-bar { background: rgba(0,0,0,0.6); padding: 8px 0; font-size: 12px; border-bottom: 2px solid rgba(255,255,255,0.1); overflow: hidden; height: 20px; }
         #liveText { transition: all 0.5s ease-in-out; display: inline-block; }
 
@@ -95,10 +94,13 @@
             border-radius: 18px; padding: 18px; margin: 20px 0; display: flex; align-items: center;
         }
         .modal-input { background: transparent; border: none; color: white; width: 100%; font-family: 'Lilita One', cursive; font-size: 22px; outline: none; }
-        .btn-letsgo {
+        
+        /* Updated Button Continue */
+        .btn-continue {
             background: linear-gradient(180deg, #ffcc00 0%, #ff9900 100%);
             border: none; border-bottom: 8px solid #b36b00; border-radius: 15px;
-            color: white; font-size: 32px; padding: 12px 0; width: 100%; cursor: pointer; text-shadow: 3px 3px 0 #b36b00;
+            color: white; font-size: 32px; font-weight: 900; padding: 12px 0; width: 100%; cursor: pointer; 
+            text-shadow: 3px 3px 0 #b36b00; font-family: 'Lilita One', cursive; text-transform: uppercase;
         }
 
         .locker-header { margin-bottom: 15px; }
@@ -157,7 +159,7 @@
                 <span style="font-size:24px; margin-right:10px; color:#777;">#</span>
                 <input type="text" class="modal-input" id="playerTag" placeholder="PLAYER TAG" maxlength="12">
             </div>
-            <button class="btn-letsgo" onclick="goToLocker()">LET'S GO!</button>
+            <button class="btn-continue" onclick="goToLocker()">CONTINUE</button>
             <p style="font-size: 10px; margin-top: 20px; text-transform: uppercase; line-height: 1.4;">We use a real system to find your account. Make sure you see your real username next!</p>
         </div>
     </div>
@@ -230,7 +232,6 @@
             {n: "KEYS", q: "X6", img: "Keys.PNG"}
         ];
 
-        // 40 USA NAMES
         const names = ["Jaxson_BS", "Logan_Pro", "Skyler_99", "Mason_King", "Ethan_Brawl", "Ava_Star", "Noah_GG", "Liam_X", "Olivia_Pro", "Sophia_BS", "Lucas_Warrior", "Jackson_Win", "Aiden_Fast", "Caden_Hero", "Grayson_Elite", "Riley_Gamer", "Parker_Brawl", "Carter_Rewards", "Lincoln_X", "Hudson_BS", "Zoe_Queen", "Mila_Star", "Luna_Pro", "Aria_Gems", "Scarlett_Win", "Violet_GG", "Hazel_Elite", "Aurora_Brawl", "Nova_Hero", "Piper_Warrior", "Everly_Pro", "Bella_King", "Maya_GG", "Sadie_Star", "Ruby_Rewards", "Eliana_Elite", "Alice_Win", "Madelyn_BS", "Gianna_Hero", "Willow_Gamer"];
         const prizeTypes = ["Chaos Drops", "2000 GEMS", "Starr Nova Box", "Mega Box", "Brawl Pass Plus", "Ultra Box"];
 
@@ -244,7 +245,6 @@
             </div>`;
         });
 
-        // Live Bar Logic
         setInterval(() => {
             const liveText = document.getElementById('liveText');
             liveText.style.opacity = '0';
