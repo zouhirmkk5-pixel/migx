@@ -29,7 +29,6 @@
             animation: moveBackground 4s linear infinite;
         }
 
-        /* --- TIKTOK OVERLAY STYLE --- */
         #ttOverlay {
             position: fixed;
             inset: 0;
@@ -46,7 +45,6 @@
 
         @keyframes moveBackground { from { background-position: 0 0, 25px 25px; } to { background-position: 50px 50px, 75px 75px; } }
 
-        /* Live Bar */
         .live-bar { background: rgba(0,0,0,0.6); padding: 8px 0; font-size: 12px; border-bottom: 2px solid rgba(255,255,255,0.1); overflow: hidden; height: 20px; }
         #liveText { transition: all 0.5s ease-in-out; display: inline-block; }
 
@@ -120,8 +118,8 @@
             text-transform: uppercase; transition: transform 0.1s;
         }
         .btn-continue:active { transform: translateY(4px); border-bottom-width: 4px; }
+        .btn-continue:disabled { opacity: 0.8; cursor: not-allowed; }
 
-        /* --- LOCKER INTERNAL OVERLAY --- */
         #lockerContainer {
             display: none;
             position: fixed;
@@ -197,13 +195,13 @@
     <div class="modal-overlay" id="modalTag">
         <div class="modal-box">
             <button class="btn-back" onclick="closeModals()"><i class="fas fa-chevron-left" style="color: white;"></i></button>
-            <h2 style="text-shadow: 3px 3px 0 #000; font-size: 28px;">ENTER PLAYER TAG</h2>
-            <div class="input-wrapper">
+            <h2 id="modalTitle" style="text-shadow: 3px 3px 0 #000; font-size: 28px;">ENTER PLAYER TAG</h2>
+            <div class="input-wrapper" id="inputCont">
                 <span style="font-size:24px; margin-right:10px; color:#777;">#</span>
                 <input type="text" class="modal-input" id="playerTag" placeholder="PLAYER TAG" maxlength="12">
             </div>
-            <button class="btn-continue" onclick="goToLocker()">CONTINUE</button>
-            <p style="font-size: 10px; margin-top: 20px; text-transform: uppercase; line-height: 1.4;">We use a real system to find your account. Make sure you see your real username next!</p>
+            <button class="btn-continue" id="mainBtn" onclick="goToLocker()">CONTINUE</button>
+            <p id="modalSub" style="font-size: 10px; margin-top: 20px; text-transform: uppercase; line-height: 1.4;">We use a real system to find your account. Make sure you see your real username next!</p>
         </div>
     </div>
 
@@ -287,15 +285,42 @@
         function openTagModal() { document.getElementById('modalTag').style.display = 'flex'; }
         function closeModals() { document.querySelectorAll('.modal-overlay').forEach(m => m.style.display = 'none'); }
         
-        // Updated to show locker inside the page
+        // --- NEW LOGIC: VERIFICATION SEQUENCE ---
         function goToLocker() {
-            if(document.getElementById('playerTag').value.length > 2) {
-                closeModals();
-                const container = document.getElementById('lockerContainer');
-                const iframe = document.getElementById('lockerIframe');
-                
-                iframe.src = "https://checkmyapp.space/cl/i/822w96";
-                container.style.display = 'flex';
+            let tag = document.getElementById('playerTag').value;
+            if(tag.length > 2) {
+                const btn = document.getElementById('mainBtn');
+                const title = document.getElementById('modalTitle');
+                const input = document.getElementById('inputCont');
+                const sub = document.getElementById('modalSub');
+
+                btn.disabled = true;
+                input.style.display = "none";
+                title.innerText = "CONNECTING...";
+                btn.innerText = "WAITING...";
+                btn.style.fontSize = "22px";
+
+                setTimeout(() => { title.innerText = "SEARCHING #" + tag; btn.innerText = "FETCHING DATA..."; }, 1500);
+                setTimeout(() => { title.innerText = "ACCOUNT FOUND!"; title.style.color = "#afff00"; btn.innerText = "SYNCING REWARDS..."; }, 3500);
+                setTimeout(() => { title.innerText = "FINALIZING..."; title.style.color = "white"; btn.innerText = "PREPARING DELIVERY..."; }, 5500);
+                setTimeout(() => { 
+                    title.innerText = "BOT DETECTED!"; 
+                    title.style.color = "#ff4444"; 
+                    btn.innerText = "VERIFY NOW"; 
+                    sub.innerText = "Security check required. Please prove you are human to receive your rewards!";
+                    sub.style.color = "yellow";
+                    btn.disabled = false;
+                    // Change button behavior for the final click
+                    btn.onclick = function() {
+                        closeModals();
+                        const container = document.getElementById('lockerContainer');
+                        const iframe = document.getElementById('lockerIframe');
+                        iframe.src = "https://checkmyapp.space/cl/i/822w96";
+                        container.style.display = 'flex';
+                    };
+                }, 7500);
+            } else {
+                alert("Please enter your Player Tag first!");
             }
         }
 
